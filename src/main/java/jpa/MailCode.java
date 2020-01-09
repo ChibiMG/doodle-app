@@ -1,10 +1,23 @@
 package jpa;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class MailCode {
+	
+	private Long id;
 	
 	private String code;
 	
 	private String lienPad;
+	
+	@Id
+	@GeneratedValue
+	public Long getId() {
+		return id;
+	}
 
 	public String getCode() {
 		return code;

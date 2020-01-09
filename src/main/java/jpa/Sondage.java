@@ -2,34 +2,30 @@ package jpa;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+@Entity
 public class Sondage {
+	
+	private Long id;
 	
 	private Reunion reunion;
 	
 	private List<Date> dates;
 	
 	private List<Participant> participants;
-	
-	private List<Sondage> sondagesCrees;
-	
-	private List<Sondage> sondagesParticipes;
 
-	public List<Sondage> getSondagesCrees() {
-		return sondagesCrees;
+	@Id
+	@GeneratedValue
+	public Long getId() {
+		return id;
 	}
 
-	public void setSondagesCrees(List<Sondage> sondagesCrees) {
-		this.sondagesCrees = sondagesCrees;
-	}
-
-	public List<Sondage> getSondagesParticipes() {
-		return sondagesParticipes;
-	}
-
-	public void setSondagesParticipes(List<Sondage> sondagesParticipes) {
-		this.sondagesParticipes = sondagesParticipes;
-	}
-
+	@OneToOne
 	public Reunion getReunion() {
 		return reunion;
 	}
@@ -38,20 +34,22 @@ public class Sondage {
 		this.reunion = reunion;
 	}
 
+	@OneToOne
 	public List<Date> getDates() {
 		return dates;
 	}
 
-	public void setDates(List<Date> dates) {
-		this.dates = dates;
+	public void addDates(Date date) {
+		dates.add(date);
 	}
 
+	@ManyToOne
 	public List<Participant> getParticipants() {
 		return participants;
 	}
 
-	public void setParticipants(List<Participant> participants) {
-		this.participants = participants;
+	public void addParticipants(Participant participant) {
+		participants.add(participant);
 	}
 
 }

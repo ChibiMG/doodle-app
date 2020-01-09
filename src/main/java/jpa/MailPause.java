@@ -1,15 +1,20 @@
 package jpa;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class MailPause {
 
-	private String lien_alimentation;
-
-	public String getLien_alimentation() {
-		return lien_alimentation;
+	private String lienAlimentation;
+	
+	@Id
+	public String getLienAlimentation() {
+		return lienAlimentation;
 	}
 
-	public void setLien_alimentation(String lien_alimentation) {
-		this.lien_alimentation = lien_alimentation;
+	public void setLienAlimentation(String lienAlimentation) {
+		this.lienAlimentation = lienAlimentation;
 	}
 	
 }
