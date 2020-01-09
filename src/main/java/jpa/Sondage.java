@@ -1,7 +1,9 @@
 package jpa;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,8 +18,12 @@ public class Sondage {
 	
 	private Reunion reunion;
 	
-	private List<Date> dates;
+	private List<Date> dates = new ArrayList<Date>();
 	
+	public void setDates(List<Date> dates) {
+		this.dates = dates;
+	}
+
 	private List<Participant> participants;
 
 	public Sondage() {
@@ -26,6 +32,7 @@ public class Sondage {
 
 	public Sondage(Reunion reunion) {
 		super();
+		participants = new ArrayList<Participant>();
 		this.reunion = reunion;
 	}
 
@@ -35,7 +42,11 @@ public class Sondage {
 		return id;
 	}
 
-	@OneToOne(mappedBy = "sondage")
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@OneToOne(mappedBy = "sondage",cascade = CascadeType.PERSIST)
 	public Reunion getReunion() {
 		return reunion;
 	}
@@ -53,9 +64,13 @@ public class Sondage {
 		dates.add(date);
 	}
 
-	@ManyToMany(mappedBy = "sondage")
+	@ManyToMany(mappedBy = "sondagesParticipes")
 	public List<Participant> getParticipants() {
 		return participants;
+	}
+
+	public void setParticipants(List<Participant> participants) {
+		this.participants = participants;
 	}
 
 	public void addParticipants(Participant participant) {

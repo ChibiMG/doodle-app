@@ -19,6 +19,10 @@ public class MailCode {
 		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getCode() {
 		return code;
 	}

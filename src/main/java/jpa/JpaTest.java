@@ -20,7 +20,7 @@ public class JpaTest {
 	 */
 	public static void main(String[] args) {
 
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("jpa-test");
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("dev");
 		EntityManager manager = factory.createEntityManager();
 		JpaTest test = new JpaTest(manager);
 
@@ -46,11 +46,16 @@ public class JpaTest {
 			Participant saly = new Participant("Knab", "Saly", "sk@ad.fr");
 			Participant maud = new Participant("Garcon", "Maud", "mg@ad.fr");
 			Reunion reunion = new Reunion("miage", "reu entre maud et saly");
+			manager.persist(saly);
+			manager.persist(maud);
+			manager.persist(reunion);
 			Sondage sondage = new Sondage(reunion);
 			Date date = new Date("09/01",true);
 			Date date1 = new Date("10/01",false);
-			
+			manager.persist(date);
+			manager.persist(date1);
 			reunion.setSondage(sondage);
+			saly.addSondagesCrees(sondage);
 			sondage.addParticipants(saly);
 			saly.addSondagesParticipes(sondage);
 			sondage.addParticipants(maud);

@@ -1,9 +1,11 @@
 package jpa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -17,9 +19,9 @@ public class Participant {
 	
 	private String email;
 	
-	private List<Sondage> sondagesCrees;
+	private List<Sondage> sondagesCrees= new ArrayList<Sondage>();
 	
-	private List<Sondage> sondagesParticipes;
+	private List<Sondage> sondagesParticipes = new ArrayList<Sondage>();
 
 	public Participant() {}
 
@@ -56,6 +58,7 @@ public class Participant {
 	}
 	
 	@OneToMany
+	@JoinColumn(name="createur")
 	public List<Sondage> getSondagesCrees() {
 		return sondagesCrees;
 	}
@@ -67,6 +70,14 @@ public class Participant {
 	@ManyToMany
 	public List<Sondage> getSondagesParticipes() {
 		return sondagesParticipes;
+	}
+
+	public void setSondagesCrees(List<Sondage> sondagesCrees) {
+		this.sondagesCrees = sondagesCrees;
+	}
+
+	public void setSondagesParticipes(List<Sondage> sondagesParticipes) {
+		this.sondagesParticipes = sondagesParticipes;
 	}
 
 	public void addSondagesParticipes(Sondage sondageParticipe) {
