@@ -5,7 +5,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -19,13 +20,22 @@ public class Sondage {
 	
 	private List<Participant> participants;
 
+	public Sondage() {
+		super();
+	}
+
+	public Sondage(Reunion reunion) {
+		super();
+		this.reunion = reunion;
+	}
+
 	@Id
 	@GeneratedValue
 	public Long getId() {
 		return id;
 	}
 
-	@OneToOne
+	@OneToOne(mappedBy = "sondage")
 	public Reunion getReunion() {
 		return reunion;
 	}
@@ -34,7 +44,7 @@ public class Sondage {
 		this.reunion = reunion;
 	}
 
-	@OneToOne
+	@OneToMany
 	public List<Date> getDates() {
 		return dates;
 	}
@@ -43,7 +53,7 @@ public class Sondage {
 		dates.add(date);
 	}
 
-	@ManyToOne
+	@ManyToMany(mappedBy = "sondage")
 	public List<Participant> getParticipants() {
 		return participants;
 	}

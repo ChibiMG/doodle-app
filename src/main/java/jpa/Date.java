@@ -1,24 +1,26 @@
 package jpa;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Date {
 	
-	private Long id;
-	
 	private String date;
 	
 	private boolean pause;
-
-	@Id
-	@GeneratedValue
-	public Long getId() {
-		return id;
+	
+	public Date() {
+		super();
 	}
 
+	public Date(String date, boolean pause) {
+		super();
+		this.date = date;
+		this.pause = pause;
+	}
+
+	@Id
 	public String getDate() {
 		return date;
 	}

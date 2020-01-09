@@ -4,7 +4,8 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -19,6 +20,15 @@ public class Participant {
 	private List<Sondage> sondagesCrees;
 	
 	private List<Sondage> sondagesParticipes;
+
+	public Participant() {}
+
+	public Participant(String nom, String prenom, String email) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+	}
 
 	public String getNom() {
 		return nom;
@@ -45,7 +55,7 @@ public class Participant {
 		this.email = email;
 	}
 	
-	@OneToOne
+	@OneToMany
 	public List<Sondage> getSondagesCrees() {
 		return sondagesCrees;
 	}
@@ -54,7 +64,7 @@ public class Participant {
 		sondagesCrees.add(sondageCree);
 	}
 
-	@OneToOne
+	@ManyToMany
 	public List<Sondage> getSondagesParticipes() {
 		return sondagesParticipes;
 	}

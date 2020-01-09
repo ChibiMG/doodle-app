@@ -18,6 +18,16 @@ public class Reunion {
 	
 	private Sondage sondage;
 	
+	public Reunion() {
+		super();
+	}
+
+	public Reunion(String intitule, String resume) {
+		super();
+		this.intitule = intitule;
+		this.resume = resume;
+	}
+
 	@Id
 	@GeneratedValue
 	public Long getId() {
