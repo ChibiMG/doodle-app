@@ -1,13 +1,16 @@
 package jpa;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -18,7 +21,9 @@ public class Sondage {
 	
 	private Reunion reunion;
 	
-	private List<Date> dates = new ArrayList<Date>();
+	private List<Date> dates;
+	
+	private Map<Date, Participant> reponses;
 	
 	public void setDates(List<Date> dates) {
 		this.dates = dates;
@@ -34,6 +39,8 @@ public class Sondage {
 		super();
 		participants = new ArrayList<Participant>();
 		this.reunion = reunion;
+	    dates = new ArrayList<Date>();
+	    reponses = new HashMap<Date, Participant>();
 	}
 
 	@Id
@@ -60,7 +67,7 @@ public class Sondage {
 		return dates;
 	}
 
-	public void addDates(Date date) {
+	public void addDate(Date date) {
 		dates.add(date);
 	}
 
@@ -73,8 +80,22 @@ public class Sondage {
 		this.participants = participants;
 	}
 
-	public void addParticipants(Participant participant) {
+	public void addParticipant(Participant participant) {
 		participants.add(participant);
+	}
+
+	
+	@ManyToMany
+	public Map<Date, Participant> getReponses() {
+		return reponses;
+	}
+
+	public void setReponses(Map<Date, Participant> reponses) {
+		this.reponses = reponses;
+	}
+	
+	public void addReponse(Date keyDate, Participant valueParticipant) {
+		reponses.put(keyDate, valueParticipant);
 	}
 
 }

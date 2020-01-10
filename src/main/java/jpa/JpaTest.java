@@ -41,8 +41,8 @@ public class JpaTest {
 	}
 
 	private void createSondage() {
-		int numOfSondages = manager.createQuery("Select s From Sondage s", Sondage.class).getResultList().size();
-		if (numOfSondages == 0) {
+		//int numOfSondages = manager.createQuery("Select s From Sondage s", Sondage.class).getResultList().size();
+		//if (numOfSondages == 0) {
 			Participant saly = new Participant("Knab", "Saly", "sk@ad.fr");
 			Participant maud = new Participant("Garcon", "Maud", "mg@ad.fr");
 			Reunion reunion = new Reunion("miage", "reu entre maud et saly");
@@ -56,15 +56,18 @@ public class JpaTest {
 			manager.persist(date1);
 			reunion.setSondage(sondage);
 			saly.addSondagesCrees(sondage);
-			sondage.addParticipants(saly);
+			sondage.addParticipant(saly);
 			saly.addSondagesParticipes(sondage);
-			sondage.addParticipants(maud);
+			sondage.addParticipant(maud);
 			maud.addSondagesParticipes(sondage);
-			sondage.addDates(date);
-			sondage.addDates(date1);
+			sondage.addDate(date);
+			sondage.addDate(date1);
+			sondage.addReponse(date, saly);
+			sondage.addReponse(date1, maud);
+			//sondage.addReponse(date1, saly);
 			
 			manager.persist(sondage);
-		}
+		//}
 	}
 
 	private void listSondages() {
@@ -75,5 +78,8 @@ public class JpaTest {
 		}
 	}
 
-
+	private void queries() {
+		
+	}
+	
 }
