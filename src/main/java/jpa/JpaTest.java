@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+
 public class JpaTest {
 
 	
@@ -15,6 +16,7 @@ public class JpaTest {
 	public JpaTest(EntityManager manager) {
 		this.manager = manager;
 	}
+
 	/**
 	 * @param args
 	 */
