@@ -25,6 +25,6 @@ public class JpaTest {
 
 		manager.close();
 		EntityManagerHelper.closeEntityManagerFactory();
-		//		factory.close();
+		//factory.close();
 	}
 }
