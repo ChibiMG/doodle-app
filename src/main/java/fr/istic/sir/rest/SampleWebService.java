@@ -5,20 +5,23 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import dao.daoParticipant;
 import dao.daoSondage;
+import jpa.Participant;
 import jpa.Sondage;
 
-import java.awt.*;
 import java.util.List;
 
-@Path("/hello") 
+@Path("/hello")
 public class SampleWebService {
 
-//	private dao.daoSondage daoSondage;
-//
-//	public SampleWebService() {
-//		this.daoSondage = new daoSondage();
-//	}
+	private daoSondage daoSondage;
+	private daoParticipant daoParticipant;
+
+	public SampleWebService() {
+		this.daoSondage = new daoSondage();
+		this.daoParticipant = new daoParticipant();
+	}
 
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
@@ -27,11 +30,20 @@ public class SampleWebService {
 	}
 
 	@GET
-	@Path("/home")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String findAll() {
-		return "hi";
+	@Path("/all")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Sondage> listeSondages() {
+		return daoSondage.listSondages();
 	}
-	
 
+	@GET
+	@Path("/createPart")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Participant> createPart() {
+		Participant saly = new Participant("Knab", "Saly", "sk@ad.fr");
+		Participant maud = new Participant("Garcon", "Maud", "mg@ad.fr");
+		daoParticipant.createParticipant(saly);
+		daoParticipant.createParticipant(maud);
+		return daoParticipant.listParticipant();
+	}
 }
