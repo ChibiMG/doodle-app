@@ -1,8 +1,6 @@
 package fr.istic.sir.rest;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import dao.daoParticipant;
@@ -36,14 +34,13 @@ public class SampleWebService {
 		return daoSondage.listSondages();
 	}
 
-	@GET
-	@Path("/createPart")
+	@POST
+	@Path("/createParticipant")
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Participant> createPart() {
-		Participant saly = new Participant("Knab", "Saly", "sk@ad.fr");
-		Participant maud = new Participant("Garcon", "Maud", "mg@ad.fr");
-		daoParticipant.createParticipant(saly);
-		daoParticipant.createParticipant(maud);
-		return daoParticipant.listParticipant();
+	public Participant createParticipant(Participant participant) {
+//		Participant saly = new Participant("Knab", "Saly", "sk@ad.fr");
+//		Participant maud = new Participant("Garcon", "Maud", "mg@ad.fr");
+		return daoParticipant.createParticipant(participant);
 	}
 }
