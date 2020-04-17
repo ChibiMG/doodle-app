@@ -11,7 +11,7 @@ import servlet.MyServlet;
 public class SampleWebService {
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
-	public String sayHello() { 
+	public String sayHello() {
 		return "Hello, how are you ?";
 	}
 	
