@@ -3,24 +3,22 @@ package jpa;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 
 @Entity
 public class Participant {
-	
+
+	private Long id;
+
 	private String nom;
-	
+
 	private String prenom;
-	
+
 	private String email;
-	
+
 	private List<Sondage> sondagesCrees= new ArrayList<Sondage>();
-	
+
 	private List<Sondage> sondagesParticipes = new ArrayList<Sondage>();
 
 	public Participant() {}
@@ -30,6 +28,16 @@ public class Participant {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
+	}
+
+	@Id
+	@GeneratedValue
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNom() {
@@ -48,7 +56,6 @@ public class Participant {
 		this.prenom = prenom;
 	}
 
-	@Id
 	public String getEmail() {
 		return email;
 	}
@@ -56,7 +63,7 @@ public class Participant {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	@OneToMany
 	@JoinColumn(name="createur")
 	public List<Sondage> getSondagesCrees() {
