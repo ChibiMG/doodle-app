@@ -57,6 +57,7 @@ public class SondageInfo extends HttpServlet {
                 + resume + "\n" +
                 " <li>dates : "+
                 "<?php " +
+                "dat" +
                 "foreach (" + dates + "as $value){print($value);}?>"
                 + "\n" + "</ul>\n" + "</body></html>");
 
