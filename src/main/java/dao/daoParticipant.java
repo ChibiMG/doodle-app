@@ -10,7 +10,13 @@ public class daoParticipant {
     private EntityManager manager = EntityManagerHelper.getEntityManager();
 
     public List<Participant> getAll() {
-        return manager.createQuery("Select p From Participant p", Participant.class).getResultList();
+
+        List<Participant> participants = manager.createQuery("Select p From Participant p", Participant.class).getResultList();
+
+        for (Participant p : participants){
+            System.out.println(p.getPrenom() +" "+ p.getNom() + ", email : "+ p.getEmail());
+        }
+        return participants;
     }
 
     public Participant createParticipant(Participant part) {
@@ -29,7 +35,7 @@ public class daoParticipant {
 
     public Participant deleteParticipant(Participant part) {
         EntityManagerHelper.beginTransaction();
-        EntityManagerHelper.getEntityManager().remove(part);
+        manager.remove(part);
         EntityManagerHelper.commit();
         return part;
     }
@@ -39,5 +45,5 @@ public class daoParticipant {
 //        EntityManagerHelper.getEntityManager().persist(part);
 //        EntityManagerHelper.commit();
 //        return part;
-//    }
+//    } chercher à faire un update avec entitymanager
 }
