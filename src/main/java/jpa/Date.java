@@ -14,10 +14,10 @@ public class Date {
 		super();
 	}
 
-	public Date(String date, boolean pause) {
+	public Date(String date) {
 		super();
 		this.date = date;
-		this.pause = pause;
+		this.pause = true;
 	}
 
 	@Id

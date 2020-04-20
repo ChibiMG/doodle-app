@@ -34,11 +34,11 @@ public class Sondage {
 		super();
 	}
 
-	public Sondage(Reunion reunion) {
+	public Sondage(Reunion reunion, List<Date> dates) {
 		super();
 		participants = new ArrayList<Participant>();
 		this.reunion = reunion;
-	    dates = new ArrayList<Date>();
+	    this.dates = dates;
 	    reponses = new HashMap<Date, Participant>();
 	}
 
