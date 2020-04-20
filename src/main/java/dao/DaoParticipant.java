@@ -6,7 +6,7 @@ import jpa.Participant;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class daoParticipant {
+public class DaoParticipant {
     private EntityManager manager = EntityManagerHelper.getEntityManager();
 
     public List<Participant> getAll() {
