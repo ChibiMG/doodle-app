@@ -11,7 +11,7 @@ public class daoSondage {
     private EntityManager manager = EntityManagerHelper.getEntityManager();
 
 
-    public List<Sondage> listSondages() {
+    public List<Sondage> getAll() {
          return manager.createQuery("Select a From Sondage a", Sondage.class).getResultList();
     }
 

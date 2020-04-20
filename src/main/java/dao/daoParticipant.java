@@ -9,7 +9,7 @@ import java.util.List;
 public class daoParticipant {
     private EntityManager manager = EntityManagerHelper.getEntityManager();
 
-    public List<Participant> listParticipant() {
+    public List<Participant> getAll() {
         return manager.createQuery("Select p From Participant p", Participant.class).getResultList();
     }
 
