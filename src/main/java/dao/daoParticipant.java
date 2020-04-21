@@ -27,17 +27,15 @@ public class daoParticipant {
     }
 
     public Participant findById(Long id){
-        Participant q = (Participant) manager.createQuery("Select p From Participant p where p.id = :id", Participant.class)
+        return manager.createQuery("Select p From Participant p where p.id = :id", Participant.class)
                 .setParameter("id", id)
-                .getResultList();
-        return q ;
+                .getSingleResult();
     }
 
-    public Participant deleteParticipant(Participant part) {
+    public void deleteParticipant(Participant part) {
         EntityManagerHelper.beginTransaction();
         manager.remove(part);
         EntityManagerHelper.commit();
-        return part;
     }
 
     public Participant updateParticipant(Participant part, Long currentId){

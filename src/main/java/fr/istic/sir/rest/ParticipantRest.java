@@ -43,7 +43,7 @@ public class ParticipantRest implements ParticipantApi {
 		return "Participant supprimé";
 	}
 
-	@GET
+	@POST
 	@Path("/updateParticipant/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override

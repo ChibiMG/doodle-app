@@ -5,13 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Sondage {
@@ -30,16 +24,19 @@ public class Sondage {
 
 	private List<Participant> participants;
 
+	private Participant createur;
+
 	public Sondage() {
 		super();
 	}
 
-	public Sondage(Reunion reunion) {
+	public Sondage(Reunion reunion, Participant createur) {
 		super();
 		participants = new ArrayList<Participant>();
 		this.reunion = reunion;
 	    dates = new ArrayList<Date>();
 	    reponses = new HashMap<Date, Participant>();
+	    this.createur = createur;
 	}
 
 	@Id
@@ -61,7 +58,7 @@ public class Sondage {
 		this.reunion = reunion;
 	}
 
-	@OneToMany
+	@ManyToMany(mappedBy = "sondagesDates")
 	public List<Date> getDates() {
 		return dates;
 	}
@@ -84,7 +81,7 @@ public class Sondage {
 	}
 
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "sondagesReponses")
 	public Map<Date, Participant> getReponses() {
 		return reponses;
 	}
@@ -97,4 +94,12 @@ public class Sondage {
 		reponses.put(keyDate, valueParticipant);
 	}
 
+	@ManyToOne
+	public Participant getCreateur(){
+		return createur;
+	}
+
+	public void setCreateur(Participant newCreateur){
+		this.createur = newCreateur;
+	}
 }
