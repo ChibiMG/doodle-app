@@ -42,4 +42,13 @@ public class SondageRest {
         daoSondage.deleteSondage(id);
         return "Participant supprimé";
     }
+
+    @POST
+    @Path("/updateSondage/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+//    @Override
+    public String updateParticipant(Sondage sondage, @PathParam("id") long id) {
+        daoSondage.updateSondage(sondage, id);
+        return "Sondage mis à jour";
+    }
 }
