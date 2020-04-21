@@ -40,10 +40,13 @@ public class daoParticipant {
         return part;
     }
 
-//    public Participant updateParticipant(Participant part, Long currentId){
-//        EntityManagerHelper.beginTransaction();
-//        EntityManagerHelper.getEntityManager().persist(part);
-//        EntityManagerHelper.commit();
-//        return part;
-//    } chercher à faire un update avec entitymanager
+    public Participant updateParticipant(Participant part, Long currentId){
+        Participant participant = manager.find(Participant.class,currentId);
+        manager.getTransaction().begin();
+        participant.setNom(part.getNom());
+        participant.setPrenom(part.getPrenom());
+        participant.setEmail(part.getEmail());
+        manager.getTransaction().commit();
+        return part;
+    }
 }

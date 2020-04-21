@@ -19,7 +19,6 @@ public class ParticipantRest implements ParticipantApi {
 	}
 
 	@GET
-	//@Path("/allParticipant")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public List<Participant> getAllPart() {
@@ -42,6 +41,15 @@ public class ParticipantRest implements ParticipantApi {
 		Participant part = findById(id);
 		daoParticipant.deleteParticipant(part);
 		return "Participant supprimé";
+	}
+
+	@GET
+	@Path("/updateParticipant/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Override
+	public String updateParticipant(Participant participant, @PathParam("id") long id) {
+		daoParticipant.updateParticipant(participant, id);
+		return "Participant mis à jour";
 	}
 
 	@POST

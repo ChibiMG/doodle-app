@@ -40,6 +40,11 @@ public interface ParticipantApi {
     @Produces(MediaType.APPLICATION_JSON)
     String deleteParticipant(@PathParam("id") long id);
 
+    @GET
+    @Path("/updateParticipant/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    String updateParticipant(Participant participant, @PathParam("id") long id);
+
     /**
      *
      * @param participant
