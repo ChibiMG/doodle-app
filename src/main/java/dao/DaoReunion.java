@@ -19,4 +19,8 @@ public class DaoReunion {
         EntityManagerHelper.commit();
         return reunion;
     }
+
+    public Reunion getReunionById(Long id){
+        return manager.createQuery("Select r From Reunion r where r.id= :id", Reunion.class).setParameter("id", id).getSingleResult();
+    }
 }

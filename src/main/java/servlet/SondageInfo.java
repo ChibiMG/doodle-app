@@ -43,10 +43,12 @@ public class SondageInfo extends HttpServlet {
         resume = request.getParameter("resume");
         datesString = request.getParameter("dates");
 
-        String[] datesStringTab = datesString.split(";");
+        datesStringTab = datesString.split(";");
         for (String date: datesStringTab) {
             dates.add(new Date(date));
         }
+
+        String essai = "['date1','date2','date3'];";
 
         out.println("<html>\n<body>\n" +
                 "<h1>Recapitulatif des informations</h1>\n" +
@@ -55,18 +57,18 @@ public class SondageInfo extends HttpServlet {
                 + intitule + "\n" +
                 " <li>Resume : "
                 + resume + "\n" +
-                " <li>dates : "+
-                "<?php " +
-                "dat" +
-                "foreach (" + dates + "as $value){print($value);}?>"
-                + "\n" + "</ul>\n" + "</body></html>");
+                " <li>dates : \n"+
+                "<ul>");
+        for (Date date : dates){
+            out.println("<li> " + date.getDate() +"\n");
+        }
+        out.println("</ul>\n" + "</ul>\n" + "</body></html>");
 
         try {
             reunion = new Reunion (intitule, resume);
             newReunion = new DaoReunion();
-            newReunion.createReunion(reunion);
             newSondage =  new DaoSondage();
-            newSondage.createSondage(new Sondage(reunion, dates));
+            newSondage.createSondage(new Sondage(newReunion.createReunion(reunion), dates));
         } catch (Exception e) {
             e.printStackTrace();
         }
