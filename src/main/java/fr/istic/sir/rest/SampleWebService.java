@@ -3,8 +3,8 @@ package fr.istic.sir.rest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
-import dao.daoParticipant;
-import dao.daoSondage;
+import dao.DaoParticipant;
+import dao.DaoSondage;
 import jpa.Participant;
 import jpa.Sondage;
 
@@ -13,12 +13,12 @@ import java.util.List;
 @Path("/hello")
 public class SampleWebService {
 
-	private daoSondage daoSondage;
-	private daoParticipant daoParticipant;
+	private DaoSondage daoSondage;
+	private DaoParticipant daoParticipant;
 
 	public SampleWebService() {
-		this.daoSondage = new daoSondage();
-		this.daoParticipant = new daoParticipant();
+		this.daoSondage = new DaoSondage();
+		this.daoParticipant = new DaoParticipant();
 	}
 
 	@GET
@@ -31,7 +31,7 @@ public class SampleWebService {
 	@Path("/all")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Sondage> listeSondages() {
-		return daoSondage.listSondages();
+		return daoSondage.getAll();
 	}
 
 	@POST

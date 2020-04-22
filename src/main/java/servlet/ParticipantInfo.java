@@ -11,10 +11,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name="participantinfo",
 urlPatterns={"/ParticipantInfo"})
 public class ParticipantInfo extends HttpServlet {
+
+	HttpSession session;
 
 	private EntityManager manager;
 
@@ -33,7 +36,11 @@ public class ParticipantInfo extends HttpServlet {
 		firstname = request.getParameter("firstname");
 		email = request.getParameter("email");
 
+		session = request.getSession();
+
 		participant = new Participant(name, firstname, email);
+
+		session.setAttribute("participant", participant);
 
 		out.println("<html>\n<body>\n" +
 				"<h1>Recapitulatif des informations</h1>\n" +
