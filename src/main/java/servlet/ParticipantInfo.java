@@ -23,6 +23,7 @@ public class ParticipantInfo extends HttpServlet {
 	private String name;
 	private String firstname;
 	private String email;
+	private Participant participant;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
@@ -31,6 +32,8 @@ public class ParticipantInfo extends HttpServlet {
 		name = request.getParameter("name");
 		firstname = request.getParameter("firstname");
 		email = request.getParameter("email");
+
+		participant = new Participant(name, firstname, email);
 
 		out.println("<html>\n<body>\n" +
 				"<h1>Recapitulatif des informations</h1>\n" +
@@ -42,11 +45,13 @@ public class ParticipantInfo extends HttpServlet {
 				" <li>Adresse e-mail: "
 				+ email + "\n" +
 				"</ul>\n" +
+				"<input type='button' name='Creer un sondage' value='Creer un sondage' onclick=\"self.location.href='addSondage.html'\" onclick>" +
+				"<input type='button' name='Participer a un sondage' value='Participer a un sondage' onclick=\"self.location.href='/ListSondages'\" onclick>" +
 				"</body></html>");
 
 		try {
 			newParticipant = new DaoParticipant();
-			newParticipant.createParticipant(new Participant(name, firstname, email));
+			newParticipant.createParticipant(participant);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

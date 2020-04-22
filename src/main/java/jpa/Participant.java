@@ -16,11 +16,11 @@ public class Participant {
 	private String nom;
 	
 	private String prenom;
-	
+
+	@Id
 	private String email;
-	
-	private List<Sondage> sondagesCrees= new ArrayList<Sondage>();
-	
+
+	@ManyToMany
 	private List<Sondage> sondagesParticipes = new ArrayList<Sondage>();
 
 	public Participant() {}
@@ -48,7 +48,6 @@ public class Participant {
 		this.prenom = prenom;
 	}
 
-	@Id
 	public String getEmail() {
 		return email;
 	}
@@ -56,24 +55,9 @@ public class Participant {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	@OneToMany
-	@JoinColumn(name="createur")
-	public List<Sondage> getSondagesCrees() {
-		return sondagesCrees;
-	}
 
-	public void addSondagesCrees(Sondage sondageCree) {
-		sondagesCrees.add(sondageCree);
-	}
-
-	@ManyToMany
 	public List<Sondage> getSondagesParticipes() {
 		return sondagesParticipes;
-	}
-
-	public void setSondagesCrees(List<Sondage> sondagesCrees) {
-		this.sondagesCrees = sondagesCrees;
 	}
 
 	public void setSondagesParticipes(List<Sondage> sondagesParticipes) {

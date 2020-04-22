@@ -5,45 +5,41 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Sondage {
-	
-	private Long id;
-	
-	private Reunion reunion;
-	
-	private List<Date> dates;
-	
-	private Map<Date, Participant> reponses;
-	
-	public void setDates(List<Date> dates) {
-		this.dates = dates;
-	}
 
+	@Id
+	@GeneratedValue
+	private Long id;
+
+	@OneToOne(mappedBy = "sondage",cascade = CascadeType.PERSIST)
+	private Reunion reunion;
+
+	@OneToMany(mappedBy = "sondage")
+	private List<Date> dates;
+
+	@ManyToMany(mappedBy = "sondagesParticipes")
 	private List<Participant> participants;
+
+	@ManyToOne
+	private Participant createur;
 
 	public Sondage() {
 		super();
+		participants = new ArrayList<Participant>();
+		dates = new ArrayList<Date>();
 	}
 
-	public Sondage(Reunion reunion, List<Date> dates) {
+	public Sondage(Reunion reunion, List<Date> dates, Participant createur) {
 		super();
 		participants = new ArrayList<Participant>();
 		this.reunion = reunion;
 	    this.dates = dates;
-	    reponses = new HashMap<Date, Participant>();
+	    this.createur = createur;
 	}
 
-	@Id
-	@GeneratedValue
 	public Long getId() {
 		return id;
 	}
@@ -52,7 +48,6 @@ public class Sondage {
 		this.id = id;
 	}
 
-	@OneToOne(mappedBy = "sondage",cascade = CascadeType.PERSIST)
 	public Reunion getReunion() {
 		return reunion;
 	}
@@ -61,7 +56,6 @@ public class Sondage {
 		this.reunion = reunion;
 	}
 
-	@OneToMany
 	public List<Date> getDates() {
 		return dates;
 	}
@@ -70,7 +64,6 @@ public class Sondage {
 		dates.add(date);
 	}
 
-	@ManyToMany(mappedBy = "sondagesParticipes")
 	public List<Participant> getParticipants() {
 		return participants;
 	}
@@ -83,18 +76,15 @@ public class Sondage {
 		participants.add(participant);
 	}
 
-	
-	@ManyToMany
-	public Map<Date, Participant> getReponses() {
-		return reponses;
+	public void setDates(List<Date> dates) {
+		this.dates = dates;
 	}
 
-	public void setReponses(Map<Date, Participant> reponses) {
-		this.reponses = reponses;
-	}
-	
-	public void addReponse(Date keyDate, Participant valueParticipant) {
-		reponses.put(keyDate, valueParticipant);
+	public Participant getCreateur() {
+		return createur;
 	}
 
+	public void setCreateur(Participant createur) {
+		this.createur = createur;
+	}
 }

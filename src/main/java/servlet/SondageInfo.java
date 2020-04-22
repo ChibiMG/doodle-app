@@ -4,6 +4,7 @@ import dao.DaoParticipant;
 import dao.DaoReunion;
 import dao.DaoSondage;
 import jpa.Date;
+import jpa.Participant;
 import jpa.Reunion;
 import jpa.Sondage;
 
@@ -35,6 +36,8 @@ public class SondageInfo extends HttpServlet {
     private String[] datesStringTab;
     private List<Date> dates = new ArrayList<Date>();
 
+    private Participant createur;
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
 
@@ -42,6 +45,7 @@ public class SondageInfo extends HttpServlet {
         intitule = request.getParameter("intitule");
         resume = request.getParameter("resume");
         datesString = request.getParameter("dates");
+
 
         datesStringTab = datesString.split(";");
         for (String date: datesStringTab) {
@@ -68,7 +72,7 @@ public class SondageInfo extends HttpServlet {
             reunion = new Reunion (intitule, resume);
             newReunion = new DaoReunion();
             newSondage =  new DaoSondage();
-            newSondage.createSondage(new Sondage(newReunion.createReunion(reunion), dates));
+            newSondage.createSondage(new Sondage(newReunion.createReunion(reunion), dates, new Participant("Mémé", "Lavieille", "mémé@lavieille.fr")));
         } catch (Exception e) {
             e.printStackTrace();
         }

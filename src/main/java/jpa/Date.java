@@ -1,14 +1,21 @@
 package jpa;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Entity
 public class Date {
-	
+
+	@Id
 	private String date;
-	
-	private boolean pause;
+
+	@OneToMany(mappedBy = "date")
+	private List<Reponse> reponses;
+
+	@ManyToOne
+	private Sondage sondage;
 	
 	public Date() {
 		super();
@@ -17,10 +24,9 @@ public class Date {
 	public Date(String date) {
 		super();
 		this.date = date;
-		this.pause = true;
+		reponses = new ArrayList<Reponse>();
 	}
 
-	@Id
 	public String getDate() {
 		return date;
 	}
@@ -29,12 +35,15 @@ public class Date {
 		this.date = date;
 	}
 
-	public boolean isPause() {
-		return pause;
+	public List<Reponse> getReponses() {
+		return reponses;
 	}
 
-	public void setPause(boolean pause) {
-		this.pause = pause;
+	public void setReponses(List<Reponse> reponses) {
+		this.reponses = reponses;
 	}
 
+	public void addReponse(Reponse reponse) {
+		reponses.add(reponse);
+	}
 }
