@@ -8,17 +8,21 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Reunion {
-	
+
+	@Id
+	@GeneratedValue
 	private Long id;
-	
+
 	private String intitule;
-	
+
 	private String resume;
-	
+
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Date dateReunion;
-	
+
+	@OneToOne
 	private Sondage sondage;
-	
+
 	public Reunion() {
 		super();
 	}
@@ -29,8 +33,6 @@ public class Reunion {
 		this.resume = resume;
 	}
 
-	@Id
-	@GeneratedValue
 	public Long getId() {
 		return id;
 	}
@@ -39,7 +41,6 @@ public class Reunion {
 	}
 
 
-	@OneToOne(cascade = CascadeType.PERSIST)
 	public Date getDateReunion() {
 		return dateReunion;
 	}
@@ -64,7 +65,6 @@ public class Reunion {
 		this.resume = resume;
 	}
 
-	@OneToOne
 	public Sondage getSondage() {
 		return sondage;
 	}

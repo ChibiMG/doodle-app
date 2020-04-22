@@ -20,9 +20,13 @@ public class daoParticipant {
     }
 
     public Participant createParticipant(Participant part) {
-        EntityManagerHelper.beginTransaction();
-        manager.persist(part);
-        EntityManagerHelper.commit();
+        try {
+            EntityManagerHelper.beginTransaction();
+            manager.persist(part);
+            EntityManagerHelper.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return part;
     }
 

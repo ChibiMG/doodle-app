@@ -1,36 +1,30 @@
 package jpa;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Entity
 public class Date {
 
-	private Long id;
-	
+	@Id
 	private String date;
-	
-	private boolean pause;
-	
+
+	@OneToMany(mappedBy = "date")
+	private List<Reponse> reponses;
+
+	@ManyToOne
+	private Sondage sondage;
+
 	public Date() {
 		super();
 	}
 
-	public Date(String date, boolean pause) {
+	public Date(String date) {
 		super();
 		this.date = date;
-		this.pause = pause;
-	}
-
-	@Id
-	@GeneratedValue
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+		reponses = new ArrayList<Reponse>();
 	}
 
 	public String getDate() {
@@ -41,12 +35,15 @@ public class Date {
 		this.date = date;
 	}
 
-	public boolean isPause() {
-		return pause;
+	public List<Reponse> getReponses() {
+		return reponses;
 	}
 
-	public void setPause(boolean pause) {
-		this.pause = pause;
+	public void setReponses(List<Reponse> reponses) {
+		this.reponses = reponses;
 	}
 
+	public void addReponse(Reponse reponse) {
+		reponses.add(reponse);
+	}
 }
