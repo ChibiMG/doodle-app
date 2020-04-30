@@ -58,8 +58,6 @@ public class SondageInfo extends HttpServlet {
             dates.add(new Date(date));
         }
 
-        String essai = "['date1','date2','date3'];";
-
         out.println("<html>\n<body>\n" +
                 "<h1>Recapitulatif des informations</h1>\n" +
                 "<ul>\n" +
@@ -72,7 +70,10 @@ public class SondageInfo extends HttpServlet {
         for (Date date : dates){
             out.println("<li> " + date.getDate() +"\n");
         }
-        out.println("</ul>\n" + "</ul>\n" + "</body></html>");
+        out.println("</ul>\n" + "</ul>\n" +
+                "<input type='button' name='Participer au sondage' value='Participer au sondage' onclick=\"self.location.href='ParticipationSondage'\" onclick>" +
+                "</body></html>");
+
 
         try {
             reunion = new Reunion (intitule, resume);
