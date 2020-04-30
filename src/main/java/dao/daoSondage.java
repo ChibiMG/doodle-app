@@ -15,7 +15,7 @@ public class daoSondage {
         List<Sondage> sondages = manager.createQuery("Select a From Sondage a", Sondage.class).getResultList();
 
         for (Sondage s : sondages){
-            System.out.println(s.getCreateur().getNom() +" "
+            System.out.println(s.getCreateur().getPrenom() +" "
                     + s.getCreateur().getNom() + ", email : "
                     + s.getCreateur().getEmail() +", réunion : "
                     + s.getReunion() + ", date dispo : "
@@ -50,11 +50,9 @@ public class daoSondage {
         survey.setCreateur(sondage.getCreateur());
         survey.setDates(sondage.getDates());
         survey.setParticipants(sondage.getParticipants());
-        survey.setReponses(sondage.getReponses());
         participant.addSondagesCrees(sondage);
         manager.getTransaction().commit();
         // à ajouter (?) supprimer le sondage ds la liste de sondage crees, de l'ancien createur de sondage
         return sondage;
     }
-
 }
