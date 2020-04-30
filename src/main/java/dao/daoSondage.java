@@ -39,7 +39,7 @@ public class daoSondage {
         EntityManagerHelper.commit();
     }
 
-    public Sondage updateSondage(Sondage sondage, Long currentId){
+    /**public Sondage updateSondage(Sondage sondage, Long currentId){
         Sondage survey = manager.find(Sondage.class,currentId);
         Long newCreateurId = sondage.getCreateur().getId();
         //pour modifier ses sondages
@@ -50,9 +50,9 @@ public class daoSondage {
         survey.setCreateur(sondage.getCreateur());
         survey.setDates(sondage.getDates());
         survey.setParticipants(sondage.getParticipants());
-        participant.addSondagesCrees(sondage);
+        //participant.addSondagesCrees(sondage);
         manager.getTransaction().commit();
         // à ajouter (?) supprimer le sondage ds la liste de sondage crees, de l'ancien createur de sondage
         return sondage;
-    }
+    }*/
 }

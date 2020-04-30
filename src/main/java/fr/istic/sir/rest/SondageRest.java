@@ -43,12 +43,12 @@ public class SondageRest {
         return "Participant supprimé";
     }
 
-    @POST
-    @Path("/updateSondage/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
+//    @POST
+//    @Path("/updateSondage/{id}")
+//    @Produces(MediaType.APPLICATION_JSON)
 //    @Override
-    public String updateParticipant(Sondage sondage, @PathParam("id") long id) {
-        daoSondage.updateSondage(sondage, id);
-        return "Sondage mis à jour";
-    }
+//    public String updateParticipant(Sondage sondage, @PathParam("id") long id) {
+//        daoSondage.updateSondage(sondage, id);
+//        return "Sondage mis à jour";
+//    }
 }
