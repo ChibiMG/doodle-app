@@ -9,7 +9,7 @@ import jpa.Participant;
 
 import java.util.List;
 
-@Path("/participant")
+@Path("/participants")
 public class ParticipantRest implements ParticipantApi {
 
 	private daoParticipant daoParticipant;
@@ -33,13 +33,12 @@ public class ParticipantRest implements ParticipantApi {
 		return daoParticipant.findById(id);
 	}
 
-	@GET
+	@DELETE
 	@Path("/deleteParticipant/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public String deleteParticipant(@PathParam("id") long id) {
-		Participant part = findById(id);
-		daoParticipant.deleteParticipant(part);
+		daoParticipant.findById(id);
 		return "Participant supprimé";
 	}
 
@@ -47,8 +46,8 @@ public class ParticipantRest implements ParticipantApi {
 	@Path("/updateParticipant/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
-	public String updateParticipant(Participant participant, @PathParam("id") long id) {
-		daoParticipant.updateParticipant(participant, id);
+	public String updateParticipant(@PathParam("id") long id) {
+		daoParticipant.findById(id);
 		return "Participant mis à jour";
 	}
 
