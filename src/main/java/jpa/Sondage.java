@@ -36,8 +36,8 @@ public class Sondage {
 		super();
 		participants = new ArrayList<Participant>();
 		this.reunion = reunion;
-		this.dates = dates;
-		this.createur = createur;
+	    this.dates = dates;
+	    this.createur = createur;
 	}
 
 	public Long getId() {

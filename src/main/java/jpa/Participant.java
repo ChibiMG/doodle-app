@@ -1,165 +1,71 @@
-//package jpa;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import javax.persistence.*;
-//
-//
-//@Entity
-//public class Participant {
-//
-//	private Long id;
-//
-//	private String nom;
-//
-//	private String prenom;
-//
-//	private String email;
-//
-//	private List<Sondage> sondagesCrees= new ArrayList<Sondage>();
-//
-//	private List<Sondage> sondagesParticipes = new ArrayList<Sondage>();
-//
-//	public Participant() {}
-//
-//	public Participant(String nom, String prenom, String email) {
-//		super();
-//		this.nom = nom;
-//		this.prenom = prenom;
-//		this.email = email;
-//	}
-//
-//	@Id
-//	@GeneratedValue
-//	public Long getId() {
-//		return id;
-//	}
-//
-//	public void setId(Long id) {
-//		this.id = id;
-//	}
-//
-//	public String getNom() {
-//		return nom;
-//	}
-//
-//	public void setNom(String nom) {
-//		this.nom = nom;
-//	}
-//
-//	public String getPrenom() {
-//		return prenom;
-//	}
-//
-//	public void setPrenom(String prenom) {
-//		this.prenom = prenom;
-//	}
-//
-//	public String getEmail() {
-//		return email;
-//	}
-//
-//	public void setEmail(String email) {
-//		this.email = email;
-//	}
-//
-//	@OneToMany
-//	@JoinColumn(name="createur")
-//	public List<Sondage> getSondagesCrees() {
-//		return sondagesCrees;
-//	}
-//
-//	public void addSondagesCrees(Sondage sondageCree) {
-//		sondagesCrees.add(sondageCree);
-//	}
-//
-//	@ManyToMany
-//	public List<Sondage> getSondagesParticipes() {
-//		return sondagesParticipes;
-//	}
-//
-//	public void setSondagesCrees(List<Sondage> sondagesCrees) {
-//		this.sondagesCrees = sondagesCrees;
-//	}
-//
-//	public void setSondagesParticipes(List<Sondage> sondagesParticipes) {
-//		this.sondagesParticipes = sondagesParticipes;
-//	}
-//
-//	public void addSondagesParticipes(Sondage sondageParticipe) {
-//		sondagesParticipes.add(sondageParticipe);
-//	}
-//
-//}
+package jpa;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 
- package jpa;
+@Entity
+public class Participant {
+	
+	private String nom;
+	
+	private String prenom;
 
- import java.util.ArrayList;
- import java.util.List;
+	@Id
+	private String email;
 
- import javax.persistence.Entity;
- import javax.persistence.Id;
- import javax.persistence.ManyToMany;
+	@ManyToMany
+	private List<Sondage> sondagesParticipes = new ArrayList<Sondage>();
 
+	public Participant() {}
 
- @Entity
- public class Participant {
+	public Participant(String nom, String prenom, String email) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+	}
 
- private String nom;
+	public String getNom() {
+		return nom;
+	}
 
- private String prenom;
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
- @Id
- private String email;
+	public String getPrenom() {
+		return prenom;
+	}
 
- @ManyToMany
- private List<Sondage> sondagesParticipes = new ArrayList<Sondage>();
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
 
- public Participant() {}
+	public String getEmail() {
+		return email;
+	}
 
- public Participant(String nom, String prenom, String email) {
- super();
- this.nom = nom;
- this.prenom = prenom;
- this.email = email;
- }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
- public String getNom() {
- return nom;
- }
+	public List<Sondage> getSondagesParticipes() {
+		return sondagesParticipes;
+	}
 
- public void setNom(String nom) {
- this.nom = nom;
- }
+	public void setSondagesParticipes(List<Sondage> sondagesParticipes) {
+		this.sondagesParticipes = sondagesParticipes;
+	}
 
- public String getPrenom() {
- return prenom;
- }
+	public void addSondagesParticipes(Sondage sondageParticipe) {
+		sondagesParticipes.add(sondageParticipe);
+	}
 
- public void setPrenom(String prenom) {
- this.prenom = prenom;
- }
-
- public String getEmail() {
- return email;
- }
-
- public void setEmail(String email) {
- this.email = email;
- }
-
-// public List<Sondage> getSondagesParticipes() {
-// return sondagesParticipes;
-// }
-
- public void setSondagesParticipes(List<Sondage> sondagesParticipes) {
- this.sondagesParticipes = sondagesParticipes;
- }
-
- public void addSondagesParticipes(Sondage sondageParticipe) {
- sondagesParticipes.add(sondageParticipe);
- }
-
- }
+}

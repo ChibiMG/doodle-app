@@ -16,7 +16,7 @@ public class Date {
 
 	@ManyToOne
 	private Sondage sondage;
-
+	
 	public Date() {
 		super();
 	}
