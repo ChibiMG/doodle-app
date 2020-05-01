@@ -1,6 +1,6 @@
 package fr.istic.sir.rest;
 
-import dao.daoParticipant;
+import dao.DaoParticipant;
 import jpa.Participant;
 
 import javax.ws.rs.*;
@@ -10,10 +10,10 @@ import java.util.List;
 @Path("/participants")
 public class ParticipantRest {
 
-	private daoParticipant daoParticipant;
+	private DaoParticipant daoParticipant;
 
 	public ParticipantRest() {
-		this.daoParticipant = new daoParticipant();
+		this.daoParticipant = new DaoParticipant();
 	}
 
 	@GET
@@ -41,8 +41,8 @@ public class ParticipantRest {
 	@PUT
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Participant updateParticipant(@PathParam("id") String email, Participant pUpdate) {
-		return daoParticipant.updateParticipant(email, pUpdate);
+	public Participant updateParticipant(@PathParam("id") String id, Participant pUpdate) {
+		return daoParticipant.updateParticipant(id, pUpdate);
 	}
 
 	@POST
