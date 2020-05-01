@@ -7,7 +7,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/survey")
+@Path("/sondages")
 public class SondageRest {
 
     private daoSondage daoSondage;
@@ -17,14 +17,12 @@ public class SondageRest {
     }
 
     @GET
-    @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Sondage> getAll() {
         return daoSondage.getAll();
     }
 
     @POST
-    @Path("/createParticipant")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Sondage createParticipant(Sondage sondage) {
@@ -32,7 +30,7 @@ public class SondageRest {
     }
 
     @DELETE
-    @Path("/deleteSondage/{id}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String deleteSondage(@PathParam("id") long id) {
         daoSondage.deleteSondage(id);
@@ -42,9 +40,8 @@ public class SondageRest {
 //    @PUT
 //    @Path("/updateSondage/{id}")
 //    @Produces(MediaType.APPLICATION_JSON)
-//    @Override
 //    public String updateParticipant(Sondage sondage, @PathParam("id") long id) {
-//        daoSondage.updateSondage(sondage, id);
-//        return "Sondage mis à jour";
+//        daoSondage.findById(id);
+//		return "Participant mis à jour";
 //    }
 }

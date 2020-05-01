@@ -30,9 +30,9 @@ public class daoParticipant {
         return part;
     }
 
-    public Participant findById(Long id){
-        return manager.createQuery("Select p From Participant p where p.id = :id", Participant.class)
-                .setParameter("id", id)
+    public Participant findById(String email){
+        return manager.createQuery("Select p From Participant p where p.email = :email", Participant.class)
+                .setParameter("email", email)
                 .getSingleResult();
     }
 

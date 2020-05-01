@@ -10,7 +10,7 @@ import jpa.Participant;
 import java.util.List;
 
 @Path("/participants")
-public class ParticipantRest implements ParticipantApi {
+public class ParticipantRest {
 
 	private daoParticipant daoParticipant;
 
@@ -20,7 +20,7 @@ public class ParticipantRest implements ParticipantApi {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Override
+	//@Override
 	public List<Participant> getAllPart() {
 		return daoParticipant.getAll();
 	}
@@ -28,33 +28,33 @@ public class ParticipantRest implements ParticipantApi {
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	@Override
-	public Participant findById(@PathParam("id") long id) {
-		return daoParticipant.findById(id);
+	//@Override
+	public Participant findById(@PathParam("id") String email) {
+		return daoParticipant.findById(email);
 	}
 
 	@DELETE
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	@Override
-	public String deleteParticipant(@PathParam("id") long id) {
-		daoParticipant.findById(id);
-		return "Participant supprimé";
+	//@Override
+	public void deleteParticipant(@PathParam("id") String email) {
+		daoParticipant.findById(email);
+		//return "Participant supprimé";
 	}
 
 	@PUT
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	@Override
-	public String updateParticipant(@PathParam("id") long id) {
-		daoParticipant.findById(id);
+	//@Override
+	public String updateParticipant(@PathParam("id") String email) {
+		daoParticipant.findById(email);
 		return "Participant mis à jour";
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	@Override
+	//@Override
 	public Participant createParticipant(Participant participant) {
 		return daoParticipant.createParticipant(participant);
 	}

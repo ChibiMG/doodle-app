@@ -46,7 +46,7 @@ public interface ParticipantApi {
      * @return
      */
     @PUT
-    @Path("/updateParticipant/{id}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     String updateParticipant(@PathParam("id") long id);
 
