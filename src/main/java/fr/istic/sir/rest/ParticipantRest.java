@@ -34,7 +34,7 @@ public class ParticipantRest implements ParticipantApi {
 	}
 
 	@DELETE
-	@Path("/deleteParticipant/{id}")
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public String deleteParticipant(@PathParam("id") long id) {
@@ -42,8 +42,8 @@ public class ParticipantRest implements ParticipantApi {
 		return "Participant supprimé";
 	}
 
-	@POST
-	@Path("/updateParticipant/{id}")
+	@PUT
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public String updateParticipant(@PathParam("id") long id) {
@@ -52,7 +52,6 @@ public class ParticipantRest implements ParticipantApi {
 	}
 
 	@POST
-	@Path("/createParticipant")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
