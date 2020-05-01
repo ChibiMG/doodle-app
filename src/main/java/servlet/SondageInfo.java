@@ -24,13 +24,6 @@ import java.util.List;
         urlPatterns={"/SondageInfo"})
 public class SondageInfo extends HttpServlet {
 
-    private EntityManager manager;
-
-    private DaoSondage newSondage;
-
-    private DaoReunion newReunion;
-
-    private Reunion reunion;
     private String intitule;
     private String resume;
     private String datesString;
@@ -70,18 +63,22 @@ public class SondageInfo extends HttpServlet {
         for (Date date : dates){
             out.println("<li> " + date.getDate() +"\n");
         }
-        out.println("</ul>\n" + "</ul>\n" +
-                "<input type='button' name='Participer au sondage' value='Participer au sondage' onclick=\"self.location.href='ParticipationSondage'\" onclick>" +
-                "</body></html>");
+        out.println("</ul>\n" + "</ul>\n");
 
+        Reunion reunion = new Reunion (intitule, resume);
+        Sondage sondage = new Sondage(reunion, dates, createur);
+        reunion.setSondage(sondage);
 
         try {
-            reunion = new Reunion (intitule, resume);
-            newReunion = new DaoReunion();
-            newSondage =  new DaoSondage();
-            reunion.setSondage(newSondage.createSondage(new Sondage(newReunion.createReunion(reunion), dates, createur)));
+            DaoReunion newReunion = new DaoReunion();
+            DaoSondage newSondage =  new DaoSondage();
+            newSondage.createSondage(sondage);
+            newReunion.createReunion(reunion);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        out.println( "<input type='button' name='Participer au sondage' value='Participer au sondage' onclick=\"self.location.href='/ParticiperSondage?id=" + sondage.getId() + "'\" onclick>" +
+                "</body></html>");
     }
 }
