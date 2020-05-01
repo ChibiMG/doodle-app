@@ -42,12 +42,9 @@ public class daoParticipant {
         EntityManagerHelper.commit();
     }
 
-    public Participant updateParticipant(Participant part, Long currentId){
-        Participant participant = manager.find(Participant.class,currentId);
+    public Participant updateParticipant(Participant part){
         manager.getTransaction().begin();
-        participant.setNom(part.getNom());
-        participant.setPrenom(part.getPrenom());
-        participant.setEmail(part.getEmail());
+        manager.persist(part);
         manager.getTransaction().commit();
         return part;
     }

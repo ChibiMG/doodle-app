@@ -1,12 +1,10 @@
 package fr.istic.sir.rest;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-
 import dao.daoParticipant;
-import fr.istic.sir.rest.api.ParticipantApi;
 import jpa.Participant;
 
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("/participants")
@@ -38,17 +36,18 @@ public class ParticipantRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	//@Override
 	public void deleteParticipant(@PathParam("id") String email) {
-		daoParticipant.findById(email);
+		Participant aDelete = daoParticipant.findById(email);
+		daoParticipant.deleteParticipant(aDelete);
 		//return "Participant supprimé";
 	}
 
 	@PUT
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	//@Override
-	public String updateParticipant(@PathParam("id") String email) {
-		daoParticipant.findById(email);
-		return "Participant mis à jour";
+	//@Override   @PathParam("id") String email
+	public Participant updateParticipant(Participant pUpdate) {
+		//Participant aUpdate =daoParticipant.findById(email);
+		return daoParticipant.updateParticipant(pUpdate);
 	}
 
 	@POST
