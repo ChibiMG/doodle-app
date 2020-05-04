@@ -19,8 +19,6 @@ public class ParticipantInfo extends HttpServlet {
 
 	HttpSession session;
 
-	private EntityManager manager;
-
 	private DaoParticipant newParticipant;
 
 	private String name;

@@ -3,10 +3,7 @@ package servlet;
 import dao.DaoParticipant;
 import dao.DaoReunion;
 import dao.DaoSondage;
-import jpa.Date;
-import jpa.Participant;
-import jpa.Reunion;
-import jpa.Sondage;
+import jpa.*;
 
 import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
@@ -72,6 +69,10 @@ public class SondageInfo extends HttpServlet {
         try {
             DaoReunion newReunion = new DaoReunion();
             DaoSondage newSondage =  new DaoSondage();
+            for (Date date : dates){
+                date.setSondage(sondage);
+                EntityManagerHelper.getEntityManager().persist(date);
+            }
             newSondage.createSondage(sondage);
             newReunion.createReunion(reunion);
         } catch (Exception e) {

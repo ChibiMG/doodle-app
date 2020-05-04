@@ -12,7 +12,7 @@ public class DaoSondage {
 
 
     public List<Sondage> getAll() {
-         return manager.createQuery("Select a From Sondage a", Sondage.class).getResultList();
+         return manager.createQuery("Select s From Sondage s", Sondage.class).getResultList();
     }
 
     public Sondage createSondage(Sondage sondage) {
@@ -20,6 +20,11 @@ public class DaoSondage {
         EntityManagerHelper.getEntityManager().persist(sondage);
         EntityManagerHelper.commit();
         return sondage;
+    }
+
+
+    public Sondage getSondageById(Long id){
+        return manager.createQuery("Select s From Sondage s where s.id= :id", Sondage.class).setParameter("id", id).getSingleResult();
     }
 
 

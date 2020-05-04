@@ -46,4 +46,12 @@ public class Date {
 	public void addReponse(Reponse reponse) {
 		reponses.add(reponse);
 	}
+
+	public Sondage getSondage() {
+		return sondage;
+	}
+
+	public void setSondage(Sondage sondage) {
+		this.sondage = sondage;
+	}
 }
