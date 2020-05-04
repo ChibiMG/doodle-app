@@ -12,9 +12,9 @@ public class Reunion {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	private String intitule;
-	
+
 	private String resume;
 
 	@OneToOne(cascade = CascadeType.PERSIST)
@@ -22,7 +22,7 @@ public class Reunion {
 
 	@OneToOne
 	private Sondage sondage;
-	
+
 	public Reunion() {
 		super();
 	}
