@@ -3,28 +3,28 @@ package jpa;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 public class Date {
 
 	@Id
+	@GeneratedValue
+	private long id;
+
 	private String date;
 
 	@OneToMany(mappedBy = "date")
 	private List<Reponse> reponses;
-
-	@ManyToOne
-	private Sondage sondage;
 	
-	public Date() {
-		super();
-	}
+	public Date() {}
 
 	public Date(String date) {
-		super();
 		this.date = date;
 		reponses = new ArrayList<Reponse>();
+	}
+
+	public long getId() {
+		return id;
 	}
 
 	public String getDate() {
@@ -47,11 +47,4 @@ public class Date {
 		reponses.add(reponse);
 	}
 
-	public Sondage getSondage() {
-		return sondage;
-	}
-
-	public void setSondage(Sondage sondage) {
-		this.sondage = sondage;
-	}
 }

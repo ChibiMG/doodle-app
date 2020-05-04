@@ -1,9 +1,7 @@
 package jpa;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.persistence.*;
 
@@ -14,10 +12,10 @@ public class Sondage {
 	@GeneratedValue
 	private Long id;
 
-	@OneToOne(mappedBy = "sondage",cascade = CascadeType.PERSIST)
+	@OneToOne(mappedBy = "sondage", cascade = CascadeType.PERSIST)
 	private Reunion reunion;
 
-	@OneToMany(mappedBy = "sondage")
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Date> dates;
 
 	@ManyToMany(mappedBy = "sondagesParticipes")
@@ -27,17 +25,8 @@ public class Sondage {
 	private Participant createur;
 
 	public Sondage() {
-		super();
 		participants = new ArrayList<Participant>();
 		dates = new ArrayList<Date>();
-	}
-
-	public Sondage(Reunion reunion, List<Date> dates, Participant createur) {
-		super();
-		participants = new ArrayList<Participant>();
-		this.reunion = reunion;
-	    this.dates = dates;
-	    this.createur = createur;
 	}
 
 	public Long getId() {
@@ -54,6 +43,7 @@ public class Sondage {
 
 	public void setReunion(Reunion reunion) {
 		this.reunion = reunion;
+		reunion.setSondage(this);
 	}
 
 	public List<Date> getDates() {
@@ -62,6 +52,10 @@ public class Sondage {
 
 	public void addDate(Date date) {
 		dates.add(date);
+	}
+
+	public void addDates(List<Date> allDates) {
+		dates.addAll(allDates);
 	}
 
 	public List<Participant> getParticipants() {

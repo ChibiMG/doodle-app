@@ -5,7 +5,6 @@ import jpa.Participant;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

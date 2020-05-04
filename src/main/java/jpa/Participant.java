@@ -5,10 +5,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-
 
 @Entity
 public class Participant {
@@ -26,7 +23,6 @@ public class Participant {
 	public Participant() {}
 
 	public Participant(String nom, String prenom, String email) {
-		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;

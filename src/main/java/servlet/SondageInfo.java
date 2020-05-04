@@ -1,11 +1,8 @@
 package servlet;
 
-import dao.DaoParticipant;
-import dao.DaoReunion;
 import dao.DaoSondage;
 import jpa.*;
 
-import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -63,18 +60,14 @@ public class SondageInfo extends HttpServlet {
         out.println("</ul>\n" + "</ul>\n");
 
         Reunion reunion = new Reunion (intitule, resume);
-        Sondage sondage = new Sondage(reunion, dates, createur);
-        reunion.setSondage(sondage);
+        Sondage sondage = new Sondage();
+        sondage.setReunion(reunion);
+        sondage.setDates(dates);
+        sondage.setCreateur(createur);
 
         try {
-            DaoReunion newReunion = new DaoReunion();
             DaoSondage newSondage =  new DaoSondage();
-            for (Date date : dates){
-                date.setSondage(sondage);
-                EntityManagerHelper.getEntityManager().persist(date);
-            }
             newSondage.createSondage(sondage);
-            newReunion.createReunion(reunion);
         } catch (Exception e) {
             e.printStackTrace();
         }

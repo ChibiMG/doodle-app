@@ -17,4 +17,6 @@ public class Reponse {
 
     @ManyToOne
     private Date date;
+
+    public Reponse() {}
 }

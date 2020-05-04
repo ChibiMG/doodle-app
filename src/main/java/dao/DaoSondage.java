@@ -17,7 +17,7 @@ public class DaoSondage {
 
     public Sondage createSondage(Sondage sondage) {
         EntityManagerHelper.beginTransaction();
-        EntityManagerHelper.getEntityManager().persist(sondage);
+        manager.persist(sondage);
         EntityManagerHelper.commit();
         return sondage;
     }

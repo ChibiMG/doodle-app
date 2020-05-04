@@ -10,24 +10,15 @@ public class DaoParticipant {
     private EntityManager manager = EntityManagerHelper.getEntityManager();
 
     public List<Participant> getAll() {
-
         List<Participant> participants = manager.createQuery("Select p From Participant p", Participant.class).getResultList();
-
-        for (Participant p : participants){
-            System.out.println(p.getPrenom() +" "+ p.getNom() + ", email : "+ p.getEmail());
-        }
         return participants;
     }
 
-    public Participant createParticipant(Participant part) {
-        try {
+    public Participant createParticipant(Participant participant) {
             EntityManagerHelper.beginTransaction();
-            manager.persist(part);
+            manager.persist(participant);
             EntityManagerHelper.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return part;
+        return participant;
     }
 
     public Participant findById(String email){

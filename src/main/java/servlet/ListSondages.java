@@ -1,9 +1,7 @@
 package servlet;
 
-
 import dao.DaoReunion;
 import dao.DaoSondage;
-import jpa.Participant;
 import jpa.Reunion;
 import jpa.Sondage;
 
@@ -13,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -23,15 +20,9 @@ import java.util.List;
         urlPatterns={"/ListSondages"})
 public class ListSondages extends HttpServlet {
 
-    private EntityManager manager;
-
     private DaoSondage listSondages;
 
     private List<Sondage> sondages;
-
-    private DaoReunion listReunions;
-
-    private List<Reunion> reunions;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");

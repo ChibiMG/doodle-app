@@ -1,6 +1,6 @@
 package fr.istic.sir.rest;
 
-import dao.daoSondage;
+import dao.DaoSondage;
 import jpa.Sondage;
 
 import javax.ws.rs.*;
@@ -10,10 +10,10 @@ import java.util.List;
 @Path("/sondages")
 public class SondageRest {
 
-    private daoSondage daoSondage;
+    private DaoSondage daoSondage;
 
     public SondageRest() {
-        this.daoSondage = new daoSondage();
+        this.daoSondage = new DaoSondage();
     }
 
     @GET
@@ -33,7 +33,7 @@ public class SondageRest {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String deleteSondage(@PathParam("id") long id) {
-        daoSondage.deleteSondage(id);
+        //daoSondage.deleteSondage(id);
         return "Participant supprimé";
     }
 
