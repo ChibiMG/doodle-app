@@ -25,23 +25,30 @@ public class SondageRest {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Sondage createParticipant(Sondage sondage) {
+    public Sondage createSondage(Sondage sondage) {
         return daoSondage.createSondage(sondage);
+    }
+
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Sondage findByIdSondage(@PathParam("id") Long id) {
+        return daoSondage.getSondageById(id);
     }
 
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String deleteSondage(@PathParam("id") long id) {
-        //daoSondage.deleteSondage(id);
-        return "Participant supprimé";
+        Sondage aDelete = daoSondage.getSondageById(id);
+        daoSondage.deleteSondage(aDelete);
+        return "Sondage supprimé";
     }
 
-//    @PUT
-//    @Path("/updateSondage/{id}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public String updateParticipant(Sondage sondage, @PathParam("id") long id) {
-//        daoSondage.findById(id);
-//		return "Participant mis à jour";
-//    }
+    @PUT
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Sondage updateSondage(@PathParam("id") Long id, Sondage sUpdate) {
+		return daoSondage.updateSondage(id, sUpdate);
+	}
 }

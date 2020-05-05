@@ -23,4 +23,22 @@ public class DaoReunion {
     public Reunion getReunionById(Long id){
         return manager.createQuery("Select r From Reunion r where r.id= :id", Reunion.class).setParameter("id", id).getSingleResult();
     }
+
+    public void deleteReunion(Reunion reunion) {
+        EntityManagerHelper.beginTransaction();
+        manager.remove(reunion);
+        EntityManagerHelper.commit();
+    }
+
+    public Reunion updateReunion(Long id, Reunion reuUpdated){
+        manager.getTransaction().begin();
+        Reunion rAUpdate = manager.find(Reunion.class,id);
+        rAUpdate.setDateReunion(reuUpdated.getDateReunion());
+        rAUpdate.setIntitule(reuUpdated.getIntitule());
+        rAUpdate.setResume(reuUpdated.getResume());
+        rAUpdate.setSondage(reuUpdated.getSondage());
+        manager.flush();
+        manager.getTransaction().commit();
+        return reuUpdated;
+    }
 }

@@ -27,5 +27,22 @@ public class DaoSondage {
         return manager.createQuery("Select s From Sondage s where s.id= :id", Sondage.class).setParameter("id", id).getSingleResult();
     }
 
+    public void deleteSondage(Sondage sondage) {
+        EntityManagerHelper.beginTransaction();
+        manager.remove(sondage);
+        EntityManagerHelper.commit();
+    }
+
+    public Sondage updateSondage(Long id, Sondage sondageUpdated){
+        manager.getTransaction().begin();
+        Sondage sAUpdate = manager.find(Sondage.class,id);
+        sAUpdate.setParticipants(sondageUpdated.getParticipants());
+        sAUpdate.setDates(sondageUpdated.getDates());
+        sAUpdate.setCreateur(sondageUpdated.getCreateur());
+        sAUpdate.setReunion(sondageUpdated.getReunion());
+        manager.flush();
+        manager.getTransaction().commit();
+        return sondageUpdated;
+    }
 
 }
