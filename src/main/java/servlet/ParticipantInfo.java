@@ -16,26 +16,20 @@ import javax.servlet.http.HttpSession;
 urlPatterns={"/ParticipantInfo"})
 public class ParticipantInfo extends HttpServlet {
 
-	HttpSession session;
-
-	private DaoParticipant newParticipant;
-
-	private String name;
-	private String firstname;
-	private String email;
-	private Participant participant;
-
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		response.setContentType("text/html");
 
 		PrintWriter out = response.getWriter();
-		name = request.getParameter("name");
-		firstname = request.getParameter("firstname");
-		email = request.getParameter("email");
+		String name = request.getParameter("name");
+		String firstname = request.getParameter("firstname");
+		String email = request.getParameter("email");
 
-		session = request.getSession();
+		HttpSession session = request.getSession();
 
-		participant = new Participant(name, firstname, email);
+		DaoParticipant daoParticipant = new DaoParticipant();
+
+		Participant participant = new Participant(name, firstname, email);
 
 		session.setAttribute("participant", participant);
 
@@ -54,8 +48,7 @@ public class ParticipantInfo extends HttpServlet {
 				"</body></html>");
 
 		try {
-			newParticipant = new DaoParticipant();
-			newParticipant.createParticipant(participant);
+			daoParticipant.createParticipant(participant);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

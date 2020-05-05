@@ -18,29 +18,21 @@ import java.util.List;
         urlPatterns={"/SondageInfo"})
 public class SondageInfo extends HttpServlet {
 
-    private String intitule;
-    private String resume;
-    private String datesString;
-    private String[] datesStringTab;
-    private List<Date> dates = new ArrayList<Date>();
-
-    private Participant createur;
-    private HttpSession session;
-
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
 
-        session = request.getSession();
+        List<Date> dates = new ArrayList<Date>();
+        HttpSession session = request.getSession();
 
         PrintWriter out = response.getWriter();
-        intitule = request.getParameter("intitule");
-        resume = request.getParameter("resume");
-        datesString = request.getParameter("dates");
+        String intitule = request.getParameter("intitule");
+        String resume = request.getParameter("resume");
+        String datesString = request.getParameter("dates");
 
-        createur = (Participant) session.getAttribute("participant");
+        Participant createur = (Participant) session.getAttribute("participant");
 
 
-        datesStringTab = datesString.split(";");
+        String[] datesStringTab = datesString.split(";");
         for (String date: datesStringTab) {
             dates.add(new Date(date));
         }

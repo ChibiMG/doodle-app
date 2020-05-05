@@ -18,5 +18,14 @@ public class Reponse {
     @ManyToOne
     private Date date;
 
+    @ManyToOne
+    private Sondage sondage;
+
     public Reponse() {}
+
+    public Reponse(Participant participant, Date date, Sondage sondage){
+        this.participant = participant;
+        this.date = date;
+        this.sondage = sondage;
+    }
 }

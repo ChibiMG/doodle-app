@@ -20,17 +20,13 @@ import java.util.List;
         urlPatterns={"/ListSondages"})
 public class ListSondages extends HttpServlet {
 
-    private DaoSondage listSondages;
-
-    private List<Sondage> sondages;
-
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
 
         PrintWriter out = response.getWriter();
 
-        listSondages = new DaoSondage();
-        sondages = new ArrayList<Sondage>();
+        DaoSondage listSondages = new DaoSondage();
+        List<Sondage> sondages = new ArrayList<Sondage>();
 
         try {
             sondages = listSondages.getAll();

@@ -17,28 +17,25 @@ import java.util.List;
         urlPatterns={"/ParticiperSondage"})
 public class ParticiperSondage extends HttpServlet {
 
-    private DaoSondage daoSondage;
-
-    private List<Date> dates;
-
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        dates = new ArrayList<Date>();
-        daoSondage = new DaoSondage();
+        List<Date> dates = new ArrayList<Date>();
+        DaoSondage daoSondage = new DaoSondage();
+        Long numSondage = daoSondage.getSondageById(Long.valueOf(request.getParameter("id"))).getId();
 
 
         try {
-            dates = daoSondage.getSondageById(Long.valueOf(request.getParameter("id"))).getDates();
+            dates = daoSondage.getSondageById(numSondage).getDates();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         out.println("<html>\n<body>\n" + "<h1>Choisir une date : </h1>\n" +
-                "<form Method=\"POST\" Action=\"/ReponseChoisie\">");
+                "<form Method=\"POST\" Action=\"/ReponseChoisie?id=" + numSondage + "\" onclick>");
         for (Date date : dates){
-            out.println("<input type='radio' name='date' value='" + date.getDate() +
+            out.println("<input type='radio' name='date' value='" + date.getId() +
                     "'>" + date.getDate());
         }
         out.println("<input type=submit value=Valider>" +

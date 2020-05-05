@@ -2,7 +2,6 @@ package dao;
 
 import jpa.EntityManagerHelper;
 import jpa.Reponse;
-import jpa.Reunion;
 
 import javax.persistence.EntityManager;
 import java.util.List;
