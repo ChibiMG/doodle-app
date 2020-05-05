@@ -18,5 +18,31 @@ public class Reponse {
     @ManyToOne
     private Date date;
 
-    public Reponse() {}
+    public Reponse() {
+        date = new Date();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Participant getParticipant() {
+        return participant;
+    }
+
+    public void setParticipant(Participant participant) {
+        this.participant = participant;
+    }
 }
