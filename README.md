@@ -41,7 +41,7 @@ Une fois que vous avez cliqué sur ‘Ok’, vous avez accès à cette page :
 Ceci est la base de données qui est actuellement vide.
 Pour que la base de données se remplisse il faut lancer la classe ‘testjpa’ sous tomcat7. L’affichage se fera au bout d’un certain temps, il faudra rafraîchir la page pour que ça s’affiche.
 
-![intj](image_readme/intellij.png)
+![intj](image_readme/itellij.png)
 
 (Ci-dessus le raccourcis permettant le lancement rapide de cette classe)
 
