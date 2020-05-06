@@ -22,7 +22,7 @@ Lancez : mvn dependency :copy-dependencies.
 Afin que l’on puisse faire la connexion backend <-> base de données, nous devons préalablement créer un répertoire de données.
 Pour ce faire il faut, à la racine du projet, créer un dossier ‘data’. (Cette manipulation est à réaliser qu’une seule fois)
 Suite à cela, dans le terminal, nous devons entrer dans le répertoire ‘data’ que nous venons de créer.
-‘SIR\data>’ et entrer :
+‘SIR\data>’ et entrez :
 
 java -cp ../target/dependency/hsqldb-2.3.4.jar org.hsqldb.Server
 
@@ -31,11 +31,95 @@ java -cp target/dependency/hsqldb-2.3.4.jar org.hsqldb.util.DatabaseManager
 
 Cette dernière ligne ouvrira la base de données. Vous tomberez sur cette page :
 
-![mcd](image_readme/database1.png)
+![db1](image_readme/database1.png)
 
 Et, entrez les informations telles qu’elles sont indiquées ci-dessus.
 Une fois que vous avez cliqué sur ‘Ok’, vous avez accès à cette page :
 
-![mcd](image_readme/database2.png)
+![db2](image_readme/database2.png)
+
+Ceci est la base de données qui est actuellement vide.
+Pour que la base de données se remplisse il faut lancer la classe ‘testjpa’ sous tomcat7. L’affichage se fera au bout d’un certain temps, il faudra rafraîchir la page pour que ça s’affiche.
+
+![intj](image_readme/intellij.png)
+
+(Ci-dessus le raccourcis permettant le lancement rapide de cette classe)
+
+##Lancement du serveur
+
+Nous avons donc accès au serveur via le lien : http://localhost:8080/
+
+Si vous entrez cela dans une page web, vous aurez accès à la partie servlet de ce projet.
+Pour les tests de la partie rest, nous avons utilisé Postman.
+
+### Les DAO
+Afin de gérer la connexion entre l’application et la base de données, nous avons créés des DAO.
+Dans ces DAO nous retrouvons les requêtes :
+*	getAll
+*	create
+*	getId
+*	update
+* delete
+Que ce soit pour la partie servlet ou bien rest, nous utilisons les DAOs.
+
+#### Les servlets
+Sur le lien localhost:8080, nous arrivons sur cette page :
+
+![serv1](image_readme/servlet1.png)
+
+Si l’on clique, on arrive sur cette page :
+
+![serv2](image_readme/servlet2.png)
+
+Une fois que l’on se créé, nous avons un récapitulatif de la personne :
+
+![serv3](image_readme/servlet3.png)
+
+Sur cette page, nous avons le choix entre la création d’un sondage ou bien la participation d’un sondage.
+Si l’on choisi la participation à un sondage, nous arrivons sur la liste des sondages.
+Si l’on décide de créer un sondage, nous arrivons sur cette page :
+
+![serv4](image_readme/servlet4.png)
+
+Une fois ajoutés, nous avons le récapitulatif de ce sondage.
+Participation à un sondage :
+Pour participer à un sondage, il suffit de choisir le sondage et sélectionner la date souhaitée puis valider.
+
+![serv5](image_readme/servlet5.png)
+
+#### Rest
+Les tests de rest se font sur Postman (dans les démonstrations ci-dessous).
+Dans un premier temps, voici le test pour l’affichage des participants :
+
+![rest1](image_readme/rest1.png)
+
+Nous avons donc bien un participant.
+Création d’un participant :
+Nous changeons le ‘get’ en ‘post’ à gauche du lien, ce qui va permettre de différencier la création à l’affichage d’un participant.
+Ne pas oublier de remplir le header comme ceci :
+
+![rest2](image_readme/rest2.png)
+![rest3](image_readme/rest3.png)
+
+Changement des caractéristiques d’un participant :
+Ici, nous souhaitons modifier le prénom du participant. Pour cela il faut :
+* Ajouter l’identifiant après le lien ( /id)
+* Modifier le ‘post’ en ‘put’
+
+Je change donc, ‘Maud’ en ‘Marie’ comme ceci : 
+
+![rest4](image_readme/rest4.png)
+
+Si nous relançons la page getAll nous avons bien la modification :
+
+![rest5](image_readme/rest5.png)
+
+Suppression :
+Pour la suppression, nous gardons la mise en page du ‘getAll’ (sans header ni body), nous ajoutons le ‘/id’ à la fin du lien et nous changeons le ‘GET’ en ‘DELETE’.
+
+![rest6](image_readme/rest6.png)
+
+L’id étant l’adresse mail, nous avons bien le message de confirmation.
+Il ne reste plus qu’un participant.
 
 
