@@ -1,11 +1,7 @@
 package jpa;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
 @Entity
 public class Participant {
@@ -16,9 +12,6 @@ public class Participant {
 
 	@Id
 	private String email;
-
-	@ManyToMany
-	private List<Sondage> sondagesParticipes = new ArrayList<Sondage>();
 
 	public Participant() {}
 
@@ -50,18 +43,6 @@ public class Participant {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public List<Sondage> getSondagesParticipes() {
-		return sondagesParticipes;
-	}
-
-	public void setSondagesParticipes(List<Sondage> sondagesParticipes) {
-		this.sondagesParticipes = sondagesParticipes;
-	}
-
-	public void addSondagesParticipes(Sondage sondageParticipe) {
-		sondagesParticipes.add(sondageParticipe);
 	}
 
 }

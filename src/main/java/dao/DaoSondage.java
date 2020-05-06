@@ -36,7 +36,6 @@ public class DaoSondage {
     public Sondage updateSondage(Long id, Sondage sondageUpdated){
         manager.getTransaction().begin();
         Sondage sAUpdate = manager.find(Sondage.class,id);
-        sAUpdate.setParticipants(sondageUpdated.getParticipants());
         sAUpdate.setDates(sondageUpdated.getDates());
         sAUpdate.setCreateur(sondageUpdated.getCreateur());
         sAUpdate.setReunion(sondageUpdated.getReunion());

@@ -1,9 +1,6 @@
 package jpa;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Reponse {
@@ -19,6 +16,7 @@ public class Reponse {
     private Date date;
 
     @ManyToOne
+    @JoinColumn(name = "sondage")
     private Sondage sondage;
 
     public Reponse() {}

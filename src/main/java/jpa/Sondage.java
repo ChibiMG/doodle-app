@@ -18,14 +18,10 @@ public class Sondage {
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Date> dates;
 
-	@ManyToMany(mappedBy = "sondagesParticipes")
-	private List<Participant> participants;
-
 	@ManyToOne
 	private Participant createur;
 
 	public Sondage() {
-		participants = new ArrayList<Participant>();
 		dates = new ArrayList<Date>();
 	}
 
@@ -52,22 +48,6 @@ public class Sondage {
 
 	public void addDate(Date date) {
 		dates.add(date);
-	}
-
-	public void addDates(List<Date> allDates) {
-		dates.addAll(allDates);
-	}
-
-	public List<Participant> getParticipants() {
-		return participants;
-	}
-
-	public void setParticipants(List<Participant> participants) {
-		this.participants = participants;
-	}
-
-	public void addParticipant(Participant participant) {
-		participants.add(participant);
 	}
 
 	public void setDates(List<Date> dates) {
