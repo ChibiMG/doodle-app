@@ -21,8 +21,7 @@ Lancez : mvn dependency :copy-dependencies.
 
 Afin que l’on puisse faire la connexion backend <-> base de données, nous devons préalablement créer un répertoire de données.
 Pour ce faire il faut, à la racine du projet, créer un dossier ‘data’. (Cette manipulation est à réaliser qu’une seule fois)
-Suite à cela, dans le terminal, nous devons entrer dans le répertoire ‘data’ que nous venons de créer :
-‘SIR\data>’ et entrez :
+Suite à cela, dans le terminal, nous devons entrer dans le répertoire ‘data’ que nous venons de créer (‘SIR\data>’) et entrez :
 
 java -cp ../target/dependency/hsqldb-2.3.4.jar org.hsqldb.Server
 
@@ -56,11 +55,13 @@ Pour les tests de la partie rest, nous avons utilisé Postman.
 ### Les DAO
 Afin de gérer la connexion entre l’application et la base de données, nous avons créés des DAO.
 Dans ces DAO nous retrouvons les requêtes :
+
 *	getAll
 *	create
 *	getId
 *	update
 * delete
+
 Que ce soit pour la partie servlet ou bien rest, nous utilisons les DAOs.
 
 #### Les servlets
@@ -77,7 +78,9 @@ Une fois que l’on crée une personne, nous avons son récapitulatif :
 ![serv3](image_readme/servlet3.png)
 
 Sur cette page, nous avons le choix entre la création d’un sondage ou bien la participation à un sondage.
+
 Si l’on choisi la participation à un sondage, nous arrivons sur la liste des sondages.
+
 Si l’on décide de créer un sondage, nous arrivons sur cette page :
 
 ![serv4](image_readme/servlet4.png)
