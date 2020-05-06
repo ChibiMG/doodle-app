@@ -17,13 +17,13 @@ Ici, nous avons choisi des tables simples qui sont :
 Nous avons réalisé notre projet sous le logiciel intelliJ.
 
 Dans un premier temps, il faut installer maven et tomcat7.
-Lancez : mvn dependency :copy-dependencies.
+Lancez : `mvn dependency :copy-dependencies`.
 
 Afin que l’on puisse faire la connexion backend <-> base de données, nous devons préalablement créer un répertoire de données.
 Pour ce faire il faut, à la racine du projet, créer un dossier ‘data’. (Cette manipulation est à réaliser qu’une seule fois)
 Suite à cela, dans le terminal, nous devons entrer dans le répertoire ‘data’ que nous venons de créer (‘SIR\data>’) et entrez :
 
-java -cp ../target/dependency/hsqldb-2.3.4.jar org.hsqldb.Server
+```java -cp ../target/dependency/hsqldb-2.3.4.jar org.hsqldb.Server```
 
 Dans un autre terminal, il faut entrer à la racine :
 
