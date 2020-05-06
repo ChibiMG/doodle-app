@@ -27,7 +27,7 @@ Suite à cela, dans le terminal, nous devons entrer dans le répertoire ‘data�
 
 Dans un autre terminal, il faut entrer à la racine :
 
-java -cp target/dependency/hsqldb-2.3.4.jar org.hsqldb.util.DatabaseManager
+```java -cp target/dependency/hsqldb-2.3.4.jar org.hsqldb.util.DatabaseManager```
 
 Cette dernière ligne ouvrira la base de données. Vous tomberez sur cette page :
 
