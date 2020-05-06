@@ -99,15 +99,17 @@ Dans un premier temps, voici le test pour l’affichage des participants :
 
 Nous avons donc bien un participant.
 
-Création d’un participant :
+*Création d’un participant :*
 
 Nous changeons le ‘get’ en ‘post’ à gauche du lien, ce qui va permettre de différencier la création de l’affichage d’un participant.
 Ne pas oublier de remplir le header comme ceci :
 
 ![rest2](image_readme/rest2.png)
+
 ![rest3](image_readme/rest3.png)
 
-Changement des caractéristiques d’un participant :
+*Changement des caractéristiques d’un participant :*
+
 Ici, nous souhaitons modifier le prénom du participant. Pour cela il faut :
 * Ajouter l’identifiant après le lien ( /id)
 * Modifier le ‘post’ en ‘put’
@@ -120,7 +122,7 @@ Si nous relançons la page getAll nous avons bien la modification :
 
 ![rest5](image_readme/rest5.png)
 
-Suppression :
+*Suppression :*
 
 Pour la suppression, nous gardons la mise en page du ‘getAll’ (donc sans header ni body), nous ajoutons le ‘/id’ à la fin du lien et nous changeons le ‘GET’ en ‘DELETE’.
 
