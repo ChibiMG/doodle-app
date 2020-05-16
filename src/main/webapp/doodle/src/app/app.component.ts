@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {CurrentUserService} from "./current-user.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'doodle';
+  title = 'Doodle';
+  currentUser: Boolean = false;
+
+  constructor(private currentUserService: CurrentUserService) {
+    currentUserService.currentUser.subscribe(user =>{
+      this.currentUser = (user != null);
+      console.log(this.currentUser == true);
+      console.log(user);
+    });
+  }
+
 }

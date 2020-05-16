@@ -7,6 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateParticipantComponent } from './create-participant/create-participant.component';
 import { CreateSondageComponent } from './create-sondage/create-sondage.component';
+import {ParticipantService} from "./participant-service.service";
+import {CurrentUserService} from "./current-user.service";
+import {ReunionService} from "./reunion.service";
+import {DateService} from "./date.service";
+import {SondageService} from "./sondage.service";
 
 
 @NgModule({
@@ -21,7 +26,13 @@ import { CreateSondageComponent } from './create-sondage/create-sondage.componen
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    ParticipantService,
+    CurrentUserService,
+    ReunionService,
+    DateService,
+    SondageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

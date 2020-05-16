@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Participant} from "../participant";
 import {ParticipantService} from "../participant-service.service";
+import {CurrentUserService} from "../current-user.service";
 
 @Component({
   selector: 'app-create-participant',
@@ -13,12 +14,13 @@ export class CreateParticipantComponent {
   email: string = '';
   participant: Participant;
 
-  constructor(private participantsService: ParticipantService) { }
+  constructor(private participantsService: ParticipantService, private currentUserService: CurrentUserService) { }
 
   foo(name: string, fistname: string, email: string) {
     console.log("ok");
     this.participant = new Participant(name, fistname, email);
     this.participantsService.createParticipant(this.participant).subscribe();
+    this.currentUserService.set(this.participant);
   }
 
 }

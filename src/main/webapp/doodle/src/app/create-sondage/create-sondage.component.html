@@ -1,1 +1,13 @@
-<p>create-sondage works!</p>
+<h2>Creer un sondage :</h2>
+
+<p>Intitulé :</p>
+<input type=text [(ngModel)]="intitule">
+
+<p>Resume :</p>
+<input type=text [(ngModel)]="resume">
+
+<p>Liste de dates (format:date1;date2...) :</p>
+<input type=text [(ngModel)]="datesString">
+
+<br><br>
+<button type="submit" (click)="foo(intitule, resume, datesString)">Créer</button>
