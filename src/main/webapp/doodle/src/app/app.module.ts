@@ -12,6 +12,7 @@ import {CurrentUserService} from "./current-user.service";
 import {ReunionService} from "./reunion.service";
 import {DateService} from "./date.service";
 import {SondageService} from "./sondage.service";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {SondageService} from "./sondage.service";
     HttpClientModule,
     FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [
     ParticipantService,
