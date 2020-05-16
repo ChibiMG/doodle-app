@@ -1,7 +1,8 @@
-<div style="text-align:center">
-  <h1>
-    {{ title }}!
-  </h1>
+<mat-toolbar color="primary">
+  <span>{{ title }}</span>
+</mat-toolbar>
+
+<div class="container">
   <app-create-participant *ngIf="!currentUser"></app-create-participant>
   <app-create-sondage *ngIf="currentUser"></app-create-sondage>
 </div>

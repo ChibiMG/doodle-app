@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { MatFormFieldControl } from "@angular/material/form-field";
+
 import {Participant} from "../participant";
 import {ParticipantService} from "../participant-service.service";
 import {CurrentUserService} from "../current-user.service";
@@ -6,21 +9,23 @@ import {CurrentUserService} from "../current-user.service";
 @Component({
   selector: 'app-create-participant',
   templateUrl: './create-participant.component.html',
-  styleUrls: ['./create-participant.component.css']
+  styleUrls: ['./create-participant.component.css'],
 })
 export class CreateParticipantComponent {
-  name: string = '';
-  firstname: string = '';
-  email: string = '';
-  participant: Participant;
+  participantForm;
 
-  constructor(private participantsService: ParticipantService, private currentUserService: CurrentUserService) { }
+  constructor(private participantsService: ParticipantService, private currentUserService: CurrentUserService, private formBuilder: FormBuilder) {
+    this.participantForm = formBuilder.group({
+      name: '',
+      firstname: '',
+      email: ''
+    })
+  }
 
-  foo(name: string, fistname: string, email: string) {
-    console.log("ok");
-    this.participant = new Participant(name, fistname, email);
-    this.participantsService.createParticipant(this.participant).subscribe();
-    this.currentUserService.set(this.participant);
+  onSubmit(formData) {
+    this.participantsService.createParticipant(formData).subscribe(
+      participant => this.currentUserService.set(participant)
+    );
   }
 
 }
