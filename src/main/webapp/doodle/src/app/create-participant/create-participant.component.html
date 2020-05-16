@@ -1,0 +1,14 @@
+<h2>Creer un utilisateur :</h2>
+
+<p>Prenom :</p>
+<input type=text [(ngModel)]="name">
+
+<p>Nom :</p>
+<input type=text [(ngModel)]="firstname">
+
+<p>E-mail :</p>
+<input type=mail [(ngModel)]="email">
+
+<br><br>
+<button type="submit" (click)="foo(name, firstname, email)">Creer</button>
+
