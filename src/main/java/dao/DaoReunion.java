@@ -36,7 +36,6 @@ public class DaoReunion {
         rAUpdate.setDateReunion(reuUpdated.getDateReunion());
         rAUpdate.setIntitule(reuUpdated.getIntitule());
         rAUpdate.setResume(reuUpdated.getResume());
-        rAUpdate.setSondage(reuUpdated.getSondage());
         manager.flush();
         manager.getTransaction().commit();
         return reuUpdated;
