@@ -12,7 +12,7 @@ public class Sondage {
 	@GeneratedValue
 	private Long id;
 
-	@OneToOne(mappedBy = "sondage", cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Reunion reunion;
 
 	@OneToMany(cascade = CascadeType.PERSIST)
@@ -39,7 +39,6 @@ public class Sondage {
 
 	public void setReunion(Reunion reunion) {
 		this.reunion = reunion;
-		reunion.setSondage(this);
 	}
 
 	public List<Date> getDates() {
