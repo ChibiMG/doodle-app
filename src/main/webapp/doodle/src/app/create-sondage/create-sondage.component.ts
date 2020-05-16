@@ -35,7 +35,7 @@ export class CreateSondageComponent {
     }
     let sondage = new Sondage(this.createur, reunion, dates)
     console.log(sondage);
-    this.sondageService.createSondage(sondage);
+    this.sondageService.createSondage(sondage).subscribe();
   }
 
 }
