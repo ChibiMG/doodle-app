@@ -16,8 +16,8 @@ export class CreateParticipantComponent {
 
   constructor(private participantsService: ParticipantService, private currentUserService: CurrentUserService, private formBuilder: FormBuilder) {
     this.participantForm = formBuilder.group({
-      name: '',
-      firstname: '',
+      prenom: '',
+      nom: '',
       email: ''
     })
   }

@@ -3,10 +3,9 @@ import {Participant} from "../participant";
 import {Date} from "../date";
 import {CurrentUserService} from "../current-user.service";
 import {SondageService} from "../sondage.service";
-import {ReunionService} from "../reunion.service";
-import {DateService} from "../date.service";
 import {Reunion} from "../reunion";
 import {Sondage} from "../sondage";
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-create-sondage',
@@ -14,34 +13,29 @@ import {Sondage} from "../sondage";
   styleUrls: ['./create-sondage.component.css']
 })
 export class CreateSondageComponent {
-  intitule: string = '';
-  resume: string = '';
-  dates: number[];
-  datesString: string;
   createur: Participant;
-  reunion: Reunion;
-  sondage: Sondage;
+  sondageForm;
 
-  constructor(private currentUserService: CurrentUserService, private sondageService: SondageService, private reunionService: ReunionService, private dateService: DateService) { }
-
-  foo(intitule: string, resume: string, datesString: string) {
-    console.log("ok");
+  constructor(private currentUserService: CurrentUserService, private sondageService: SondageService, private formBuilder: FormBuilder) { 
     this.currentUserService.currentUser.subscribe(user => this.createur = user);
+    this.sondageForm = formBuilder.group({
+      intitule: '',
+      resume: '',
+      datesString: ''
+    })
+  }
 
-    this.reunion = new Reunion(intitule, resume);
-    console.log(this.reunionService.createReunion(this.reunion).subscribe());
-
-    let datesStringTab = datesString.split(";");
+  onSubmit(formData) {
+    let reunion = new Reunion(formData.intitule, formData.resume)
+    let dates = []
+    let datesStringTab = formData.datesString.split(";");
     for (let stringDate of datesStringTab) {
       let date = new Date(stringDate);
-      this.dateService.createDate(date).subscribe();
-      this.dates.push(date.id);
+      dates.push(date);
     }
-
-    this.sondage = new Sondage(this.createur.email, this.reunion.id, this.dates)
-    this.sondageService.createSondage(this.sondage).subscribe();
-
-
+    let sondage = new Sondage(this.createur, reunion, dates)
+    console.log(sondage);
+    this.sondageService.createSondage(sondage);
   }
 
 }

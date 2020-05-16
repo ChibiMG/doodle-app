@@ -3,12 +3,12 @@
     <form [formGroup]="participantForm" (ngSubmit)="onSubmit(participantForm.value)">
         <mat-form-field class="form-field">
             <mat-label>Prénom</mat-label>
-            <input matInput placeholder="Votre prénom" formControlName="name">
+            <input matInput placeholder="Votre prénom" formControlName="prenom">
         </mat-form-field>
 
         <mat-form-field class="form-field">
             <mat-label>Nom</mat-label>
-            <input matInput placeholder="Votre nom" formControlName="firstname">
+            <input matInput placeholder="Votre nom" formControlName="nom">
         </mat-form-field>
 
         <mat-form-field class="form-field">
