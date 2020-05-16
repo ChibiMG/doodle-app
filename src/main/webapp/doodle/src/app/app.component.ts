@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import MD5 from "crypto-js/md5";
 import {CurrentUserService} from "./current-user.service";
 
 @Component({
@@ -8,13 +9,15 @@ import {CurrentUserService} from "./current-user.service";
 })
 export class AppComponent {
   title = 'Doodle';
-  currentUser: Boolean = false;
+  currentUser = null;
+  hash: string = '';
 
   constructor(private currentUserService: CurrentUserService) {
-    currentUserService.currentUser.subscribe(user =>{
-      this.currentUser = (user != null);
-      console.log(this.currentUser == true);
-      console.log(user);
+    currentUserService.currentUser.subscribe(user => {
+      this.currentUser = user;
+      if (user != null) {
+        this.hash = MD5(user.email)
+      }
     });
   }
 

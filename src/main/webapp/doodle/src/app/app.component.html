@@ -1,5 +1,13 @@
 <mat-toolbar color="primary">
   <span>{{ title }}</span>
+  <span class="spacer"></span>
+  <div *ngIf="currentUser" class="current-user">
+    <div class="current-user-name">
+      <span class="mat-small" style="font-weight: bold">{{ currentUser.prenom }} {{ currentUser.nom }}</span><br>
+      <span class="mat-small">{{ currentUser.email }}</span>
+    </div>
+    <img mat-card-avatar src="https://www.gravatar.com/avatar/{{ hash }}" alt="">
+  </div>
 </mat-toolbar>
 
 <div class="container">
