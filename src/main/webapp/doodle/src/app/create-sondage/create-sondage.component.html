@@ -1,13 +1,21 @@
-<h2>Creer un sondage :</h2>
+<mat-card class="container">
+    <mat-card-title>Créer un sondage</mat-card-title>
+    <form [formGroup]="sondageForm" (ngSubmit)="onSubmit(sondageForm.value)">
+        <mat-form-field class="form-field">
+            <mat-label>Intitulé</mat-label>
+            <input matInput placeholder="Intitulé de la réunion" formControlName="intitule">
+        </mat-form-field>
 
-<p>Intitulé :</p>
-<input type=text [(ngModel)]="intitule">
+        <mat-form-field class="form-field">
+            <mat-label>Résumé</mat-label>
+            <textarea matInput placeholder="Resume" formControlName="resume"></textarea>
+        </mat-form-field>
 
-<p>Resume :</p>
-<input type=text [(ngModel)]="resume">
+        <mat-form-field class="form-field">
+            <mat-label>List de dates (format: date1;date2...)</mat-label>
+            <input matInput placeholder="Votre email" formControlName="datesString">
+        </mat-form-field>
 
-<p>Liste de dates (format:date1;date2...) :</p>
-<input type=text [(ngModel)]="datesString">
-
-<br><br>
-<button type="submit" (click)="foo(intitule, resume, datesString)">Créer</button>
+        <button mat-flat-button color="primary" type="submit">Créer</button>
+    </form>
+</mat-card>

@@ -1,14 +1,21 @@
-<h2>Creer un utilisateur :</h2>
+<mat-card class="container">
+    <mat-card-title>Créer un utilisateur</mat-card-title>
+    <form [formGroup]="participantForm" (ngSubmit)="onSubmit(participantForm.value)">
+        <mat-form-field class="form-field">
+            <mat-label>Prénom</mat-label>
+            <input matInput placeholder="Votre prénom" formControlName="prenom">
+        </mat-form-field>
 
-<p>Prenom :</p>
-<input type=text [(ngModel)]="name">
+        <mat-form-field class="form-field">
+            <mat-label>Nom</mat-label>
+            <input matInput placeholder="Votre nom" formControlName="nom">
+        </mat-form-field>
 
-<p>Nom :</p>
-<input type=text [(ngModel)]="firstname">
+        <mat-form-field class="form-field">
+            <mat-label>E-mail</mat-label>
+            <input matInput placeholder="Votre email" formControlName="email">
+        </mat-form-field>
 
-<p>E-mail :</p>
-<input type=mail [(ngModel)]="email">
-
-<br><br>
-<button type="submit" (click)="foo(name, firstname, email)">Creer</button>
-
+        <button mat-flat-button color="primary" type="submit">Créer</button>
+    </form>
+</mat-card>

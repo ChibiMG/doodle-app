@@ -4,11 +4,11 @@ import {Date} from "./date";
 
 export class Sondage {
   id: number;
-  createur: string;
-  reunion: number;
-  dates: number[];
+  createur: Participant;
+  reunion: Reunion;
+  dates: Date[];
 
-  constructor(createur: string, reunion: number, dates: number[]) {
+  constructor(createur: Participant, reunion: Reunion, dates: Date[]) {
     this.createur = createur;
     this.reunion = reunion;
     this.dates = dates;
