@@ -162,5 +162,5 @@ On peut se déconnecter (mais on ne peut pas se reconnecter, cette fonctionnalit
 ## Capture d'écran
 Capture de la partie "liste des sondages"
 
-![liste](image_readme/capture.png)
+![liste](image_readme/Capture.PNG)
 
