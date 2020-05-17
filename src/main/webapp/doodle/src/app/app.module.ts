@@ -20,6 +20,8 @@ import {SondageService} from "./sondage.service";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RepondreSondageComponent } from './repondre-sondage/repondre-sondage.component';
 import { ListeSondagesComponent } from './liste-sondages/liste-sondages.component';
+import {MatIconModule} from "@angular/material/icon";
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { ListeSondagesComponent } from './liste-sondages/liste-sondages.componen
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule
   ],
   providers: [
     ParticipantService,

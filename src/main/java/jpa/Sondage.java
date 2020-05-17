@@ -12,10 +12,10 @@ public class Sondage {
 	@GeneratedValue
 	private Long id;
 
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.PERSIST, orphanRemoval = true)
 	private Reunion reunion;
 
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@OneToMany(cascade = CascadeType.PERSIST, orphanRemoval = true)
 	private List<Date> dates;
 
 	@ManyToOne

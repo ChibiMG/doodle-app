@@ -1,6 +1,7 @@
 package jpa;
 
 import javax.persistence.*;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 @Entity
 public class Reponse {
@@ -35,6 +36,7 @@ public class Reponse {
         this.id = id;
     }
 
+    @JsonIgnore
     public Date getDate() {
         return date;
     }

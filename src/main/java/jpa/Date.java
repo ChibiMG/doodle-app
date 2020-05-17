@@ -13,7 +13,7 @@ public class Date {
 
 	private String date;
 
-	@OneToMany(mappedBy = "date")
+	@OneToMany(mappedBy = "date", orphanRemoval = true)
 	private List<Reponse> reponses;
 	
 	public Date() {}

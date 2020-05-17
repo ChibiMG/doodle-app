@@ -38,11 +38,9 @@ public class SondageRest {
 
     @DELETE
     @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public String deleteSondage(@PathParam("id") long id) {
+    public void deleteSondage(@PathParam("id") long id) {
         Sondage aDelete = daoSondage.getSondageById(id);
         daoSondage.deleteSondage(aDelete);
-        return "Sondage supprimé";
     }
 
     @PUT

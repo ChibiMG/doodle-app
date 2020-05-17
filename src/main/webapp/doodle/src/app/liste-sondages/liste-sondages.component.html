@@ -1,1 +1,38 @@
-<p>liste-sondages works!</p>
+<mat-card class = "container">
+  <mat-card-title>Liste des sondages</mat-card-title>
+
+  <table mat-table [dataSource]="sondages" class="mat-elevation-z8">
+    <ng-container matColumnDef="intitule">
+      <th mat-header-cell *matHeaderCellDef> Intitulé </th>
+      <td mat-cell *matCellDef="let element"> {{element.reunion.intitule}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="resume">
+      <th mat-header-cell *matHeaderCellDef> Resumé </th>
+      <td mat-cell *matCellDef="let element"> {{element.reunion.resume}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="participer">
+      <th mat-header-cell *matHeaderCellDef> Participer au sondage </th>
+      <td mat-cell *matCellDef="let element"> <a mat-button href="https://www.google.com/" target="_blank">Participer</a> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="reponses">
+      <th mat-header-cell *matHeaderCellDef> Voir les réponses </th>
+      <td mat-cell *matCellDef="let element"> <a mat-button href="https://www.google.com/" target="_blank">Résultat</a> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="supprimer">
+      <th mat-header-cell *matHeaderCellDef> Supprimer le sondage </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="warn" aria-label="Supprimer le sondage" (click)="deleteSondage(element.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</mat-card>
