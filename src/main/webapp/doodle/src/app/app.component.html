@@ -1,5 +1,13 @@
 <mat-toolbar color="primary">
   <span>{{ title }}</span>
+  <span class="spacer"></span>
+  <div class="current-user" *ngIf="currentUser">
+    <button mat-icon-button (click)="logout()" ><mat-icon>exit_to_app</mat-icon></button>
+    <div class="current-user-name">
+      <span class="mat-small">{{ currentUser.prenom }} {{ currentUser.nom }}</span><br>
+    </div>
+    <img mat-card-avatar src="http://www.gravatar.com/avatar/{{ hash }}?d=mp" alt="avatar">
+  </div>
 </mat-toolbar>
 
 <div class="container">

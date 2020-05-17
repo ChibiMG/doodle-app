@@ -1,1 +1,2 @@
-<a mat-flat-button color="primary" routerLink="/login">Créer un compte</a>
+<a mat-flat-button color="primary" routerLink="/login" *ngIf="!currentUser">Créer un compte</a>
+<a mat-flat-button color="primary" routerLink="/sondages" *ngIf="currentUser">Voir les sondages</a>
