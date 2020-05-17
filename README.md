@@ -139,7 +139,7 @@ Il ne reste plus qu’un participant.
 En IDE : Webstorm avec comme langage angular
 
 Pour lancer l’application :
-* dans un terminal aller dans data : cd data, puis lancer le server (même commande que pour le backend - Partie 1 : Installation)
+* dans un terminal aller dans data : `cd data`, puis lancer le server (même commande que pour le backend - Partie 1 : Installation)
 * dans un autre terminal lancer le manager (idem que dans 'Installation')
 * dans un autre terminal lancer `tomcat7:run`
 * dans un autre terminal faire `npm install -g @angular/cli` puis `ng serve`
