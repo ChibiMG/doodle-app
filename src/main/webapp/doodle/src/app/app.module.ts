@@ -18,13 +18,17 @@ import {ReunionService} from "./reunion.service";
 import {DateService} from "./date.service";
 import {SondageService} from "./sondage.service";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RepondreSondageComponent } from './repondre-sondage/repondre-sondage.component';
+import { ListeSondagesComponent } from './liste-sondages/liste-sondages.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateParticipantComponent,
-    CreateSondageComponent
+    CreateSondageComponent,
+    RepondreSondageComponent,
+    ListeSondagesComponent
   ],
   imports: [
     HttpClientModule,

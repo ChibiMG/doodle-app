@@ -4,5 +4,7 @@
 
 <div class="container">
   <app-create-participant *ngIf="!currentUser"></app-create-participant>
-  <app-create-sondage *ngIf="currentUser"></app-create-sondage>
+  <app-liste-sondages *ngIf="currentUser"></app-liste-sondages>
+  <!-- <app-create-sondage *ngIf="currentUser"></app-create-sondage>
+  <app-repondre-sondage></app-repondre-sondage>  -->
 </div>
