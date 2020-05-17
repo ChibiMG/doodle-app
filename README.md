@@ -134,4 +134,19 @@ Pour la suppression, nous gardons la mise en page du ‘getAll’ (donc sans hea
 L’id étant l’adresse mail, nous avons bien le message de confirmation.
 Il ne reste plus qu’un participant.
 
+## Front-end
+
+En IDE : Webstorm avec comme langage angular
+
+Pour lancer l’application :
+* dans un terminal aller dans data : cd data, puis lancer le server (même commande que pour le backend - Partie 1 : Installation)
+* dans un autre terminal lancer le manager (idem que dans 'Installation')
+* dans un autre terminal lancer `tomcat7:run`
+* dans un autre terminal faire `npm install -g @angular/cli` puis `ng serve`
+
+On peut accèder au test sur localhost:4200 (ou on peut aussi passer par un bouton sur le localhost:8080)
+
+On a utilisé des services pour faire le lien entre l’API rest & le front : service pour les user, pour les sondages ...
+On a utilisé des composants pour l’affichage ou les formulaires : créer un user, créer un sondage …
+On a utilisé angular materials pour que ce soit plus propre
 
