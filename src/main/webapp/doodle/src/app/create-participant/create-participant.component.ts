@@ -5,6 +5,7 @@ import { MatFormFieldControl } from "@angular/material/form-field";
 import {Participant} from "../participant";
 import {ParticipantService} from "../participant-service.service";
 import {CurrentUserService} from "../current-user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-participant',
@@ -14,7 +15,7 @@ import {CurrentUserService} from "../current-user.service";
 export class CreateParticipantComponent {
   participantForm;
 
-  constructor(private participantsService: ParticipantService, private currentUserService: CurrentUserService, private formBuilder: FormBuilder) {
+  constructor(private participantsService: ParticipantService, private currentUserService: CurrentUserService, private formBuilder: FormBuilder, private router: Router) {
     this.participantForm = formBuilder.group({
       prenom: '',
       nom: '',
@@ -23,9 +24,10 @@ export class CreateParticipantComponent {
   }
 
   onSubmit(formData) {
-    this.participantsService.createParticipant(formData).subscribe(
-      participant => this.currentUserService.set(participant)
-    );
+    this.participantsService.createParticipant(formData).subscribe(participant => {
+      this.currentUserService.set(participant);
+      this.router.navigate(["/sondages"]);
+    });
   }
 
 }

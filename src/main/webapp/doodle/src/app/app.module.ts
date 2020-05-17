@@ -22,6 +22,7 @@ import { RepondreSondageComponent } from './repondre-sondage/repondre-sondage.co
 import { ListeSondagesComponent } from './liste-sondages/liste-sondages.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table";
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {MatTableModule} from "@angular/material/table";
     CreateParticipantComponent,
     CreateSondageComponent,
     RepondreSondageComponent,
-    ListeSondagesComponent
+    ListeSondagesComponent,
+    HomeComponent
   ],
   imports: [
     HttpClientModule,

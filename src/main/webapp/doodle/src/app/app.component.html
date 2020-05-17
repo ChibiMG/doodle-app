@@ -3,8 +3,5 @@
 </mat-toolbar>
 
 <div class="container">
-  <app-create-participant *ngIf="!currentUser"></app-create-participant>
-  <app-liste-sondages *ngIf="currentUser"></app-liste-sondages>
-  <!-- <app-create-sondage *ngIf="currentUser"></app-create-sondage>
-  <app-repondre-sondage></app-repondre-sondage>  -->
+  <router-outlet></router-outlet>
 </div>

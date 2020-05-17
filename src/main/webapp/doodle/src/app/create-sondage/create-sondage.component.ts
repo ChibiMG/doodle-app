@@ -6,6 +6,7 @@ import {SondageService} from "../sondage.service";
 import {Reunion} from "../reunion";
 import {Sondage} from "../sondage";
 import { FormBuilder } from '@angular/forms';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-sondage',
@@ -16,7 +17,7 @@ export class CreateSondageComponent {
   createur: Participant;
   sondageForm;
 
-  constructor(private currentUserService: CurrentUserService, private sondageService: SondageService, private formBuilder: FormBuilder) { 
+  constructor(private currentUserService: CurrentUserService, private sondageService: SondageService, private formBuilder: FormBuilder, private router: Router) {
     this.currentUserService.currentUser.subscribe(user => this.createur = user);
     this.sondageForm = formBuilder.group({
       intitule: '',
@@ -35,7 +36,9 @@ export class CreateSondageComponent {
     }
     let sondage = new Sondage(this.createur, reunion, dates)
     console.log(sondage);
-    this.sondageService.createSondage(sondage).subscribe();
+    this.sondageService.createSondage(sondage).subscribe(() => {
+      this.router.navigate(["/sondages"]);
+    });
   }
 
 }
