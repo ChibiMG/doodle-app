@@ -20,9 +20,6 @@ public class Reunion {
 	@OneToOne(cascade = CascadeType.PERSIST)
 	private Date dateReunion;
 
-	@OneToOne
-	private Sondage sondage;
-
 	public Reunion() {
 	}
 
@@ -61,14 +58,6 @@ public class Reunion {
 
 	public void setResume(String resume) {
 		this.resume = resume;
-	}
-
-	public Sondage getSondage() {
-		return sondage;
-	}
-
-	public void setSondage(Sondage sondage) {
-		this.sondage = sondage;
 	}
 
 }
